@@ -1,0 +1,37 @@
+# Site settings
+name: Less Or More
+email: jettyl@126.com
+author: JettyLee
+url: http://www.jettylee.cn
+resume_site: 
+github: https://github.com/jettylee
+baseurl: ""
+description: 勿忘初心
+meta_description: 李嘉伟;个人博客;积少成多
+motto: Many a little make a mickle
+banner: 积少成多
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+paginate: 10
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+github_username: jettylee
+highlighter: rouge
+
+# Build settings
+markdown: kramdown
+
+FB:
+  comments :
+    provider : duoshuo
+    duoshuo:
+        short_name : jettyleeblog
+    disqus :
+        short_name : 
+    # facebook :
+    #   appid : 123
+    #   num_posts: 5
+    #   width: 580
+    #   colorscheme: light
