@@ -3,7 +3,7 @@ layout: post
 title:  "使用Jekyll构建博客并使用"
 date:   2016-11-12 11:13:01 +0800
 categories: jekyll
-tag: jekyll
+tag: 教程
 ---
 
 * content
@@ -17,6 +17,7 @@ tag: jekyll
 
 >3.利用<b>git</b>命令在下载好的文件夹完成博客初始化
 
+			
 			#git初始化
 			$ git init
 		
@@ -26,14 +27,16 @@ tag: jekyll
 			#所有内容加入本地git库
 			$ git add .
 		
-			#提交内容到本地.message 写提交的提示信息
-　　		$ git commit -m "message"
+			#提交内容到本地,message 写提交的提示信息
+　　				 	 		$ git commit -m "message"
 
-			#username是github上的username;repository是你刚创建的repository
-　			$ git remote add origin https://github.com/username/repository.git
+			#路径中username是github上的username,repository是你刚创建的repository
+　				$ git remote add origin https://github.com/username/repository.git
 　　	
+
 			#提交到固定分支
 			$ git push origin gh-pages
+			
 
 >4.编写属于你的文章
 
