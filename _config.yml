@@ -9,7 +9,7 @@ baseurl: ""
 description: 勿忘初心
 meta_description: 李嘉伟;个人博客;积少成多
 motto: Many a little make a mickle
-banner: 积少成多
+banner: 
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
