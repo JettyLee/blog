@@ -3,7 +3,7 @@ layout: post
 title:  "使用Jekyll构建博客并使用"
 date:   2016-11-12 11:13:01 +0800
 categories: jekyll
-tag: 教程
+tag: 环境搭建
 ---
 
 * content
