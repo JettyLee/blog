@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Welcome to Jekyll"
 date:   2016-11-12 10:31:01 +0800
 categories: jekyll
 tag: jekyll
@@ -8,10 +8,6 @@ tag: jekyll
 
 * content
 {:toc}
-
-
-重新上路
-			build by Jekyll.
 
 
 诫子书
