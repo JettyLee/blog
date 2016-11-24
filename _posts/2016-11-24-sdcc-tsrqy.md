@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "探索容器云电商架构"
+date:   2016-11-24 10:19:01 +0800
+categories: 电商架构
+tag: sdcc2016
+---
+
+* content
+{:toc}
+
+
+独立技术顾问 易兵讲解 观感：
+
+----------
+PPT如下：	
+
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-0.jpg"  width="757" alt="ppt0"  align="center" align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-1.jpg"  width="757" alt="ppt1"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-2.jpg"  width="757" alt="ppt2"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-3.jpg"  width="757" alt="ppt3"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-4.jpg"  width="757" alt="ppt4"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-5.jpg"  width="757" alt="ppt5"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-6.jpg"  width="757" alt="ppt6"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-7.jpg"  width="757" alt="ppt7"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-8.jpg"  width="757" alt="ppt8"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-9.jpg"  width="757" alt="ppt9"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-10.jpg"  width="757" alt="ppt10"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-11.jpg"  width="757" alt="ppt11"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-12.jpg"  width="757" alt="ppt12"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-13.jpg"  width="757" alt="ppt13"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-14.jpg"  width="757" alt="ppt14"   align="center"/>
+<img src="/styles/images/tsrqy/36bd6aca81750768835a2b84b0b5214c-15.jpg"  width="757" alt="ppt15"   align="center"/>
+
+
+
+
+[jekyll]:      http://jekyllrb.com
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-help]: https://github.com/jekyll/jekyll-help
