@@ -10,10 +10,14 @@ description: 勿忘初心
 meta_description: 李嘉伟;个人博客;积少成多
 motto: Many a little make a mickle
 banner: 
-
+# 分页
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
-paginate: 10
+#paginate: 10
+
+#gems: ['jekyll-paginate']
+
+
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
