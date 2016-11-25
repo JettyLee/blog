@@ -27,6 +27,7 @@ tag: maven
 <br/>artifactId:项目的唯一标识
 <br/>version:项目的版本
 <br/>例如
+
 >"<"dependency>
 <br/> "<"groupId>org.springframework</groupId>
 <br/> "<"artifactId>spring-webmvc</artifactId>
