@@ -18,7 +18,7 @@ tag: maven
 
 #### 1.dependencies元素
 
-<dependencies></dependencies>,此元素包含多个项目依赖需要使用的<dependency></dependency>
+"<"dependencies></dependencies>,此元素包含多个项目依赖需要使用的<dependency></dependency>
 
 #### 2.dependency元素
 
@@ -26,7 +26,7 @@ tag: maven
 <br/>groupId:组织的唯一标识
 <br/>artifactId:项目的唯一标识
 <br/>version:项目的版本
-例如
+<br/>例如
 >"<"dependency>
 <br/> "<"groupId>org.springframework</groupId>
 <br/> "<"artifactId>spring-webmvc</artifactId>
