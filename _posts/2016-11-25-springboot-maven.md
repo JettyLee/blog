@@ -1,16 +1,18 @@
 ---
 layout: post
-title:  "maven学习笔记"
+title:  "学习笔记之Maven"
 date:   2016-11-25 13:32:01 +0800
 categories: 学习笔记
-tag: maven
+tag: Maven
 ---
 
 * content
 {:toc}
 
 
-## 《Spring Boot实战》中Maven
+# 《Spring Boot实战》
+
+## Maven
 
 ----------
 
