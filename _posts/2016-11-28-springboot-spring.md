@@ -50,7 +50,7 @@ Spring 提供了3种方式实现Bean的创建和管理依赖。
 <br/>3.@Repository 在数据访问层(dao层) 使用
 <br/>4.@Controller 在展示层(MVC-->Spring MVC) 使用
 
-#### 注入Bean的注解：
+#### 注入Bean的注解
 
 >1.@Autowired: Spring提供的注解；
 <br/>2.@Inject: JSR-330提供的注解；
@@ -58,8 +58,9 @@ Spring 提供了3种方式实现Bean的创建和管理依赖。
 <br/>注：JSR-330和JSR-250 是Java依赖注入标准
 <br/>三个注解可以注解在set方法上或属性上
 
-#### 常用注解：
->1.@Configuration 声明当前累是一个配置类；
+#### 配置类中常用注解
+
+>1.@Configuration 声明当前类是一个配置类；
 <br/>2.@ComponentScan
 <br/>自动扫描包名下所有使用@Service、@Component、@Repository和@Controller的类，并注册为Bean；
 <br/>3.@EnableAspectJAutoProxy注解开启Spring对AspectJ代理的支持。
@@ -103,14 +104,16 @@ AOP:面向切面编程，相当于OOP面向对象编程。
 ##### @Retention
 
 >@Retention: 定义注解的保留策略
-<br/>1.@Retention(RetentionPolicy.SOURCE)    //注解仅存在于源码中，在class字节码文件中不包含
+
+>1.@Retention(RetentionPolicy.SOURCE)    //注解仅存在于源码中，在class字节码文件中不包含
 <br/>2.@Retention(RetentionPolicy.CLASS)  // 默认的保留策略，注解会在class字节码文件中存在，但运行时无法获得，
 <br/>3.@Retention(RetentionPolicy.RUNTIME)   // 注解会在class字节码文件中存在，在运行时可以通过反射获取到
 
 ##### @Target
 
 >@Target：定义注解的作用目标
-<br/>1.@Target(ElementType.TYPE) // 接口、类、枚举、注解
+
+>1.@Target(ElementType.TYPE) // 接口、类、枚举、注解
 <br/>2.@Target(ElementType.FIELD)  // 字段、枚举的常量
 <br/>3.@Target(ElementType.METHOD)  // 方法
 <br/>4.@Target(ElementType.PARAMETER)  // 方法参数
