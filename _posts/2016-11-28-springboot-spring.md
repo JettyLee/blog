@@ -78,6 +78,7 @@ Java配置是通过@Configuration和@Bean 来实现。
 ### AOP
 
 AOP:面向切面编程，相当于OOP面向对象编程。
+
 >Spring的AOP目的是为了解耦。
 <br/>Spring 支持AspectJ的注解式切面编程。
 
@@ -134,7 +135,7 @@ AOP:面向切面编程，相当于OOP面向对象编程。
 
 #### 拦截方式
 
-##### 1.注解；
+##### 1.注解式拦截
 
 >1)即在方法上方使用利用元注解编写的注解；
 <br/>2)在切面类  @Pointcut("@annotation(xx.xxx.xxx)")
@@ -145,8 +146,21 @@ AOP:面向切面编程，相当于OOP面向对象编程。
 <br/>Method method=signature.getMethod();
 <br/>XX xx=method.getMethod(XX.class);//获得注解类
 
-##### 2.方法规则
+##### 2.方法规则式拦截
 
+>主要通过表达式 execution定义切入点
+
+###### 关于execution
+
+>（* com.jettylee.service.*.*（..））中几个通配符的含义： 
+<br/>|第一个 * —— 通配 随便率性返回值类型| 
+<br/>|第二个 * —— 通配包com.evan.crm.service下的随便率性class| 
+<br/>|第三个 * —— 通配包com.evan.crm.service下的随便率性class的随便率性办法| 
+<br/>|第四个 .. —— 通配 办法可以有0个或多个参数|
+
+>MethodSignature signature=(MethodSignature)joinPoint.getSignature();
+<br/>Method method=signature.getMethod();
+<br/>System.out.println("方法规则式拦截,"+method.getName());
 
 
 
