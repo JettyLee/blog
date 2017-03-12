@@ -26,6 +26,9 @@ tag: 环境搭建
 #### 5.验证jekyll安装是否成功，cmd输入jekyll --version
 
 ##### ps:电脑被我玩坏了，重新配置了一遍环境，就简单的记录了一下…
+#### 若git 没有设置username和email ,输入 (引号中是值)进行配置
+>git config --global user.name "username"
+>git config --global user.email "email"
 
 
 
