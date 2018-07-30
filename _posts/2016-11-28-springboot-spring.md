@@ -3,7 +3,7 @@ layout: post
 title:  "学习笔记之Spring基础配置"
 date:   2016-11-28 19:41:00 +0800
 categories: 学习笔记
-tag: spring
+tag: Spring
 ---
 
 * content
@@ -22,7 +22,7 @@ tag: spring
 
 >POJO（Plain Ordinary Java Object）简单的Java对象，实际就是普通JavaBeans，是为了避免和EJB混淆所创造的简称。
 使用POJO名称是为了避免和EJB混淆起来, 而且简称比较直接. 其中有一些属性及其getter setter方法的类,没有业务逻辑，有时可以作为VO(value -object)或dto(Data Transform Object)来使用.当然,如果你有一个简单的运算属性也是可以的,但不允许有业务方法,也不能携带有connection之类的方法。
- 
+
 2.通过依赖注入和基于接口编程实现松耦合；
 
 3.通过AOP和默认系统进行声明式编程；
@@ -172,7 +172,7 @@ System.out.println("方法规则式拦截,"+method.getName());
 ```
 
 
- 
+
 
 [jekyll]:      http://jekyllrb.com
 [jekyll-gh]:   https://github.com/jekyll/jekyll
