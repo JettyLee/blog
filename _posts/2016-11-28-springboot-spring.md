@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "学习笔记之Spring基础配置"
+title:  "《Spring Boot实战》Spring基础"
 date:   2016-11-28 19:41:00 +0800
 categories: 学习笔记
 tag: Spring
@@ -10,11 +10,7 @@ tag: Spring
 {:toc}
 
 
-# 《Spring Boot实战》
 
-## Spring基础配置
-
-----------
 
 ### Spring 四大原则
 
@@ -81,21 +77,21 @@ Java配置是通过@Configuration和@Bean 来实现。
 ```
 ### AOP
 
-AOP:面向切面编程，相当于OOP面向对象编程。
+#### AOP:面向切面编程，相当于OOP面向对象编程。
 
 >Spring的AOP目的是为了解耦。
-<br/>Spring 支持AspectJ的注解式切面编程。
+Spring 支持AspectJ的注解式切面编程。
 
 #### AspectJ
 
 >AspectJ是一个面向切面的框架，它扩展了Java语言。AspectJ定义了AOP语法，所以它有一个专门的编译器用来生成遵守Java字节编码规范的Class文件。
 
 1.使用@AspectJ 声明是一个切面。
-<br/>2.使用@After、@Before、@Around 定义建言(advice),可直接将拦截规则(切点)作为参数。
-<br/>3.其中@After、@Before、@Around参数的拦截规则为切点(PointCut),为了使切点复用，可使用@PointCut专门定义拦截规则，然后在@After、@Before、@Around参数中调用。
-<br/>4.其中符合条件的每一个被拦截处为连接点(JoinPoint)。
+2.使用@After、@Before、@Around 定义建言(advice),可直接将拦截规则(切点)作为参数。
+3.其中@After、@Before、@Around参数的拦截规则为切点(PointCut),为了使切点复用，可使用@PointCut专门定义拦截规则，然后在@After、@Before、@Around参数中调用。
+4.其中符合条件的每一个被拦截处为连接点(JoinPoint)。
 
-#### Maven依赖
+### Maven依赖
 
 ```
 spring-aop
@@ -103,12 +99,13 @@ aspectjrt
 aspectjweaver
 ```
 
-#### 元注解
-编写拦截规则的注解可能用到元注解，即 @Retention、 @Target、 @Document、 @Inherited四种。
+### 元注解
+
+编写拦截规则的注解可能用到元注解，即 @Retention、 @Target、 @Document、@Inherited四种。
 
 >元注解是指注解的注解。
 
-##### @Retention
+#### @Retention
 
 >@Retention: 定义注解的保留策略
 
@@ -117,7 +114,7 @@ aspectjweaver
 2.@Retention(RetentionPolicy.CLASS)  // 默认的保留策略，注解会在class字节码文件中存在，但运行时无法获得，
 3.@Retention(RetentionPolicy.RUNTIME)   // 注解会在class字节码文件中存在，在运行时可以通过反射获取到
 ```
-##### @Target
+#### @Target
 
 >定义注解的作用目标 注：elementType 可以有多个，一个注解可以为类的，方法的，字段的等等
 
@@ -132,17 +129,17 @@ aspectjweaver
 8.@Target(ElementType.PACKAGE) / // 包
 ```
 
-##### @Document
+#### @Document
 
 >@Document：说明该注解将被包含在javadoc中
 
-##### @Inherited
+#### @Inherited
 
 >@Inherited：说明子类可以继承父类中的该注解
 
-#### 拦截方式
+### 拦截方式
 
-##### 1.注解式拦截
+#### 1.注解式拦截
 
 >1)即在方法上方使用利用元注解编写的注解；
 <br/>2)在切面类  @Pointcut("@annotation(xx.xxx.xxx)")
@@ -154,11 +151,11 @@ MethodSignature signature=(MethodSignature)joinPoint.getSignature();
 Method method=signature.getMethod();
 XX xx=method.getMethod(XX.class);//获得注解类
 ```
-##### 2.方法规则式拦截
+#### 2.方法规则式拦截
 
 >主要通过表达式 execution定义切入点
 
-###### 关于execution
+##### 关于execution
 
 >（* com.jettylee.service.*.*（..））中几个通配符的含义： 
 <br/>|第一个 * —— 通配 随便率性返回值类型| 
