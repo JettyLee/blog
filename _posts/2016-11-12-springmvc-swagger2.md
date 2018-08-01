@@ -1,14 +1,13 @@
 ---
-
 layout: post
 
 title:  "SpringMVC整合Swagger2"
 
 date:   2016-11-12 12:44:01 +0800
 
-categories: javaweb
+categories: 学习笔记
 
-tag: 框架整合
+tag: Swagger2
 
 ---
 
@@ -23,8 +22,9 @@ tag: 框架整合
 
 
 
-
 #### 1.引用jar(maven配置)
+
+> 一定要注意版本号
 
 ``` bash
 <dependency>
@@ -44,7 +44,7 @@ tag: 框架整合
 
 > basePackage 写action包名或者controller包名
 
- 
+
 ``` bash
 import org.springframework.context.annotation.Bean;  
 import org.springframework.context.annotation.ComponentScan;  
@@ -107,11 +107,11 @@ public class SwaggerConfig2 extends WebMvcConfigurationSupport{
 
 
 
-			
+​			
 
 #### 4.swagger 注解
 
-			
+
 ``` bash
 //分类
 @Api(tags = { "***" })
@@ -125,8 +125,8 @@ produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 
 //忽略api
 @ApiIgnore
-``` 
-			
+```
+
 
 #### 5.springmvc 中使用
 
@@ -142,7 +142,7 @@ public BaseModelJson<Integer> addActivityVisitNum(
             ......
 			｝
 ```
-			
+
 
 [jekyll]:      http://jekyllrb.com
 

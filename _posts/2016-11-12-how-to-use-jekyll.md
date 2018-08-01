@@ -2,8 +2,8 @@
 layout: post
 title:  "使用Jekyll构建博客并使用"
 date:   2016-11-12 11:13:01 +0800
-categories: jekyll
-tag: 环境搭建
+categories: 环境搭建
+tag: jekyll
 ---
 
 * content
@@ -17,7 +17,7 @@ tag: 环境搭建
 
 >3.利用<b>git</b>命令在下载好的文件夹完成博客初始化
 
-			
+
 			#git初始化
 			$ git init
 		
@@ -36,7 +36,7 @@ tag: 环境搭建
 
 			#提交到固定分支
 			$ git push origin gh-pages
-			
+
 
 >4.编写属于你的文章
 

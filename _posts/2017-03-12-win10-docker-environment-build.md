@@ -2,8 +2,8 @@
 layout: post
 title:  "win10搭建docker环境"
 date:   2017-03-12 21:14:01 +0800
-categories: docker
-tag: 环境搭建
+categories: 环境搭建
+tag: docker
 ---
 
 * content
