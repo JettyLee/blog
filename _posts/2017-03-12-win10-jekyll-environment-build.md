@@ -2,8 +2,8 @@
 layout: post
 title:  "win10搭建本地jekyll博客环境"
 date:   2017-03-12 20:10:01 +0800
-categories: jekyll
-tag: 环境搭建
+categories: 环境搭建
+tag: jekyll
 ---
 
 * content
@@ -52,7 +52,7 @@ git config --global user.email "email"
 
 
 
-			
+​			
 
 [jekyll]:      http://jekyllrb.com
 [jekyll-gh]:   https://github.com/jekyll/jekyll
