@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "学习笔记之Maven"
+title:  "《Spring Boot实战》-Maven"
 date:   2016-11-25 13:32:01 +0800
 categories: 学习笔记
 tag: Maven
@@ -10,20 +10,18 @@ tag: Maven
 {:toc}
 
 
-# 《Spring Boot实战》
-
-## Maven
+# 《Spring Boot实战》-Maven
 
 ----------
 
 ### maven 的pom.xml
 
-#### 1.dependencies元素
+#### dependencies元素
 ```bash
 <dependencies></dependencies>
 上面元素包含多个项目依赖需要使用的<dependency></dependency>
 ```
-#### 2.dependency元素
+#### dependency元素
 ```bash
 <dependency>内部通过groupId、artifactId以及version 确定唯一的依赖，有人称这三个为坐标</dependency>
         <groupId>groupId:组织的唯一标识</groupId>
@@ -67,7 +65,7 @@ tag: Maven
     </plugins>
 </build>
 ```
- 
+
 ### Maven中心库没有需要的JAR处理
 
 >如安装Oracle驱动到本地库：
@@ -75,11 +73,11 @@ tag: Maven
 ```bash
 >mvn install:install-file -DgroupId=com.oracle  -DartifactId=ojdbc14 -Dversion=10.2.0.2.0 -Dpackaging=jar  -Dfile=D:\ojdbc14.jar
 ```
+
  
+
  
- 
- 
- 
+
  
 
 [jekyll]:      http://jekyllrb.com
