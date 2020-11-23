@@ -1,0 +1,417 @@
+I"�1<ul id="markdown-toc">
+  <li><a href="#快速开始" id="markdown-toc-快速开始">快速开始</a></li>
+  <li><a href="#项目目录" id="markdown-toc-项目目录">项目目录</a></li>
+  <li><a href="#全局" id="markdown-toc-全局">全局</a>    <ul>
+      <li><a href="#字符串" id="markdown-toc-字符串">字符串</a></li>
+      <li><a href="#引号" id="markdown-toc-引号">引号</a></li>
+      <li><a href="#引入" id="markdown-toc-引入">引入</a></li>
+      <li><a href="#方法" id="markdown-toc-方法">方法</a></li>
+      <li><a href="#" id="markdown-toc-">===</a></li>
+      <li><a href="#map-foreach-for" id="markdown-toc-map-foreach-for">map forEach for</a></li>
+      <li><a href="#if" id="markdown-toc-if">if</a></li>
+      <li><a href="#consolelog" id="markdown-toc-consolelog">console.log()</a></li>
+      <li><a href="#被注释代码" id="markdown-toc-被注释代码">被注释代码</a></li>
+    </ul>
+  </li>
+  <li><a href="#命名" id="markdown-toc-命名">命名</a>    <ul>
+      <li><a href="#文件夹命名" id="markdown-toc-文件夹命名">文件夹命名</a></li>
+      <li><a href="#变量命名" id="markdown-toc-变量命名">变量命名</a></li>
+      <li><a href="#下拉数据命名" id="markdown-toc-下拉数据命名">下拉数据命名</a></li>
+      <li><a href="#方法命名" id="markdown-toc-方法命名">方法命名</a></li>
+    </ul>
+  </li>
+  <li><a href="#组件" id="markdown-toc-组件">组件</a>    <ul>
+      <li><a href="#组件命名" id="markdown-toc-组件命名">组件命名</a></li>
+      <li><a href="#组件模板" id="markdown-toc-组件模板">组件模板</a></li>
+      <li><a href="#组件钩子顺序" id="markdown-toc-组件钩子顺序">组件钩子顺序</a></li>
+    </ul>
+  </li>
+  <li><a href="#工具类" id="markdown-toc-工具类">工具类</a>    <ul>
+      <li><a href="#请求模块" id="markdown-toc-请求模块">请求模块</a></li>
+      <li><a href="#操作数据对象" id="markdown-toc-操作数据对象">操作数据/对象</a></li>
+      <li><a href="#日期时间格式化" id="markdown-toc-日期时间格式化">日期时间格式化</a></li>
+      <li><a href="#localstorage" id="markdown-toc-localstorage">localStorage</a></li>
+      <li><a href="#过滤器" id="markdown-toc-过滤器">过滤器</a></li>
+    </ul>
+  </li>
+  <li><a href="#路由" id="markdown-toc-路由">路由</a></li>
+  <li><a href="#css" id="markdown-toc-css">CSS</a>    <ul>
+      <li><a href="#主样式表" id="markdown-toc-主样式表">主样式表</a></li>
+      <li><a href="#工具样式表" id="markdown-toc-工具样式表">工具样式表</a></li>
+      <li><a href="#根样式表" id="markdown-toc-根样式表">根样式表</a></li>
+    </ul>
+  </li>
+</ul>
+<h2 id="快速开始">快速开始</h2>
+
+<p>我们将通过一个简单的 Demo 来阐述 Vue 规范，在此之前，我们假设您已经：</p>
+
+<ul>
+  <li>熟悉 ECMAScript2015</li>
+  <li>熟悉 Vue</li>
+  <li>熟悉 Vue/cli</li>
+  <li>熟悉 ElementUI</li>
+  <li>熟悉 webStorm</li>
+</ul>
+
+<hr />
+
+<h2 id="项目目录">项目目录</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    // 严禁修改
+    |- build
+    // 严禁修改
+    |- config
+    |- src
+        // 未封装请求类之前的文件夹，即将删除
+        |- api
+        // 静态文件夹，可放置图片    
+        |- assets
+        // 公共组件
+        |- components
+        // 静态数据
+        |- constants
+        // 路由
+        |- router
+        // Vuex模块
+        |- store
+        // 样式
+        |- styles
+        // 工具
+        |- utils
+        // 校验
+        |- vaildate
+        // 组件
+        |- views
+        // 严禁修改
+        |- App.vue
+        // 严禁修改
+        |- main.js
+    // 严禁修改
+    |- static
+    
+
+</code></pre></div></div>
+
+<h2 id="全局">全局</h2>
+
+<p>全局代码结尾处必须用;结尾</p>
+
+<h3 id="字符串">字符串</h3>
+
+<p>全局禁止使用‘+’，拼接字符串，使用‘${}’</p>
+
+<h3 id="引号">引号</h3>
+
+<p>全局除需要转义情况可以使用“”，其余情况禁止使用“”</p>
+
+<h3 id="引入">引入</h3>
+
+<p>引入模块首字母大写的驼峰命名，并在其上方使用单行注释，表明其含义</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    // Xxx引入
+    import Xxx from '@/xxx'
+
+</code></pre></div></div>
+
+<h3 id="方法">方法</h3>
+
+<p>全局除特殊情况下可以使用function，其余情况全部使用箭头函数</p>
+
+<h3>===</h3>
+
+<p>全局除需要对于类型可以使用===，其余情况全部使用==</p>
+
+<h3 id="map-foreach-for">map forEach for</h3>
+
+<ol>
+  <li>全局除特殊情况下可以使用map/forEach，其余情况全部使用for</li>
+  <li>for循环嵌套不得超过两层</li>
+</ol>
+
+<h3 id="if">if</h3>
+
+<p>全局if判断嵌套不得超过三层</p>
+
+<h3 id="consolelog">console.log()</h3>
+
+<p>全局提交代码时，禁止提交带有console.log()代码，如有特殊需求，在代码上方使用TODO注释标识，并表明原因</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    // TODO 原因
+    console.log();
+
+</code></pre></div></div>
+
+<h3 id="被注释代码">被注释代码</h3>
+
+<p>如被注释代码，无用不得提交，如有用且暂时无用，必须用TODO注释，表明含义</p>
+
+<h2 id="命名">命名</h2>
+
+<h3 id="文件夹命名">文件夹命名</h3>
+
+<p>首字母小写的驼峰命名</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    |- xxxXxx
+
+</code></pre></div></div>
+
+<h3 id="变量命名">变量命名</h3>
+
+<ol>
+  <li>首字母小写的驼峰命名，并在其上方使用单行注释，表明其含义</li>
+  <li>所有变量必须在return中初始化</li>
+</ol>
+
+<p><strong>禁止使用null</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    // xxx表单
+    xxxForm:{}
+    // xxxModal 默认false
+    xxxModal:false
+    // xxx下拉数据
+    xxxOptions:{}
+    // xxxFlag 默认false
+    xxxFlag:false 
+    // xxx字段
+    xxxXxx:''
+
+</code></pre></div></div>
+
+<h3 id="下拉数据命名">下拉数据命名</h3>
+
+<p>首字母小写的驼峰命名，并在其上方使用单行注释，表明其含义      <br />
+选项中，必须用label描述其含义，必须用value表示其唯一标识
+<strong>禁止使用null</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    // xxx下拉数据
+    xxxOptions:[
+        {label:xxx,value:xxx},
+        {label:xxx,value:xxx},
+        {label:xxx,value:xxx}
+    ]
+
+</code></pre></div></div>
+
+<h3 id="方法命名">方法命名</h3>
+
+<ol>
+  <li>首字母小写的驼峰命名，并在其上方使用类注释，表明其含义</li>
+  <li>首个单词必须是动词</li>
+  <li>类注释方法简介后，空一行</li>
+  <li>方法首个{后，空一行</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    /**
+     * 获取详细数据
+     *
+     * @param id
+     * @returns {string}
+     */
+     getDetailData (id) {
+     
+        return '';
+     }
+
+</code></pre></div></div>
+
+<h2 id="组件">组件</h2>
+
+<h3 id="组件命名">组件命名</h3>
+
+<ol>
+  <li>首字母大写的驼峰命名，基础组件表明Form、Table等</li>
+  <li>所有组件都是其父组件xxxList的子组件</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    |- XxxList.vue
+    |- XxxForm.vue
+    |- XxxTable.vue
+
+</code></pre></div></div>
+
+<h3 id="组件模板">组件模板</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    &lt;template&gt;
+        &lt;section&gt;
+        &lt;/section&gt;
+    &lt;/template&gt;
+    &lt;script&gt;
+        /**
+         * 组件功能简介
+         *
+         *@date 最后修改事件
+         *@author 最后修改者姓名 汉语拼音小写全拼
+         */
+        export default {
+            name: '组件名',
+            data() {
+                return {}
+            },
+            methods:{},
+            mounted(){}
+        }
+    &lt;/script&gt;
+    &lt;style scoped&gt;
+    
+    &lt;/style&gt;
+
+</code></pre></div></div>
+
+<h3 id="组件钩子顺序">组件钩子顺序</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    name
+    component
+    data
+    computed
+    watch
+    methods
+    mounted
+
+</code></pre></div></div>
+
+<h2 id="工具类">工具类</h2>
+
+<h3 id="请求模块">请求模块</h3>
+
+<p>全局请求已经封装，如有问题请联系我，严禁任何人修改</p>
+
+<p>调用</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    // Get
+    this.$http.ajaxGet('xxx', {}).then((result) =&gt; {});
+    // Post
+    this.$http.ajaxPost('xxx', {}).then((result) =&gt; {});
+    // Put
+    this.$http.ajaxPut('xxx', {}).then((result) =&gt; {});
+    // Delete
+    this.$http.ajaxDelete('xxx', {}).then((result) =&gt; {});
+
+</code></pre></div></div>
+
+<h3 id="操作数据对象">操作数据/对象</h3>
+
+<p>全局已经加入lodash，如有问题请联系我，严禁任何人修改</p>
+
+<p>调用</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    this.$lodash.xxx;
+
+</code></pre></div></div>
+
+<h3 id="日期时间格式化">日期时间格式化</h3>
+
+<p>全局已经加入moment，如有问题请联系我，严禁任何人修改</p>
+
+<p>调用</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    this.$moment(xxx).format('YYYY-MM-DD HH:mm:ss');
+    this.$moment(xxx).format('YYYY-MM-DD hh:mm:ss');
+    this.$moment(xxx).format('YYYY-MM-DD HH:mm');
+    this.$moment(xxx).format('YYYY-MM-DD hh:mm');
+    this.$moment(xxx).format('YYYY-MM-DD HH');
+    this.$moment(xxx).format('YYYY-MM-DD hh');
+    this.$moment(xxx).format('YYYY-MM-DD');
+    this.$moment(xxx).format('YYYY-MM');
+    this.$moment(xxx).format('YYYY');
+
+</code></pre></div></div>
+
+<h3 id="localstorage">localStorage</h3>
+
+<p>全局已经对localStorage进行封装，如有问题请联系我，严禁任何人修改</p>
+
+<p>调用</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    
+    this.$localStorage.setItem();
+    this.$localStorage.getItem();
+    this.$localStorage.removeItem();
+    this.$localStorage.clear();
+
+</code></pre></div></div>
+
+<h3 id="过滤器">过滤器</h3>
+
+<p>必须严格使用Vue过滤器格式</p>
+
+<p>例子</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    /**
+     * 24小时制时分秒格式化
+     */
+    Vue.filter('time_HH_MM_SS', function (val) {
+    
+    	return moment(val).format('YYYY-MM-DD HH:mm:ss');
+    })
+
+</code></pre></div></div>
+
+<h2 id="路由">路由</h2>
+
+<p>全局通过Map定义路由，在其上方使用单行注释，表明xxx模块 - xxx</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    // 平台及商户管理 - 平台管理列表
+    urlMap.set('/xxx', 'xxx/xxx/xxx.vue')
+
+</code></pre></div></div>
+
+<h2 id="css">CSS</h2>
+
+<p>全局使用sass，支持sass所有特性</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    
+    // 主样式表
+    |- main.scss
+    // 工具样式表
+    |- func.scss
+    // 根样式表
+    |- reset.scss
+
+</code></pre></div></div>
+
+<h3 id="主样式表">主样式表</h3>
+
+<p>如需修改ElementUI固有样式，可以在此表中修改，但必须写清注释</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    /* xxx样式修改 */
+
+</code></pre></div></div>
+
+<h3 id="工具样式表">工具样式表</h3>
+
+<p>如需要定宽度，可以在工具样式表中查找，如没有可以添加</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    /* 宽度100px */
+    .w100 {
+        width : 100px !important;
+    }
+
+</code></pre></div></div>
+
+<h3 id="根样式表">根样式表</h3>
+
+<p>禁止修改</p>
+
+<blockquote>
+
+  <p>以上只是简单的Demo，具体实践中一定要活学活用，还有更多好玩的用法等着你来探索</p>
+</blockquote>
+
+:ET

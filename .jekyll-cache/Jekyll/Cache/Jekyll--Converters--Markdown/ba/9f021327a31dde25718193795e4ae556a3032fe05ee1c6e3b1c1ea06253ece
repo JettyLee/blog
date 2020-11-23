@@ -1,0 +1,48 @@
+I"<ul id="markdown-toc">
+  <li><a href="#1下载并安装rubyinstaller--rubyinstaller-点击后出现下图" id="markdown-toc-1下载并安装rubyinstaller--rubyinstaller-点击后出现下图">1.下载并安装rubyinstaller  <a href="http://rubyinstaller.org/downloads/">rubyinstaller </a>（点击后出现下图）</a></li>
+  <li><a href="#2验证ruby-安装是否成功打开cmdwinr-输入cmd打开后输入" id="markdown-toc-2验证ruby-安装是否成功打开cmdwinr-输入cmd打开后输入">2.验证ruby 安装是否成功，打开cmd(win+R 输入CMD),打开后输入</a></li>
+  <li><a href="#3下载devkit点击上方rubyinstaller在页面下面即可下载解压完成后找到文件夹点击文件夹后按住shift右键选择从此处" id="markdown-toc-3下载devkit点击上方rubyinstaller在页面下面即可下载解压完成后找到文件夹点击文件夹后按住shift右键选择从此处">3.下载DevKit（点击上方rubyinstaller在页面下面即可下载），解压完成后找到文件夹（点击文件夹后，按住shift+右键，选择从此处</a></li>
+  <li><a href="#4安装jekyll-在当前命令窗口输入命令" id="markdown-toc-4安装jekyll-在当前命令窗口输入命令">4.安装jekyll 在当前命令窗口输入命令</a></li>
+  <li><a href="#5验证jekyll安装是否成功cmd输入命令" id="markdown-toc-5验证jekyll安装是否成功cmd输入命令">5.验证jekyll安装是否成功，cmd输入命令</a>    <ul>
+      <li><a href="#ps电脑被我玩坏了重新配置了一遍环境就简单的记录了一下" id="markdown-toc-ps电脑被我玩坏了重新配置了一遍环境就简单的记录了一下">ps:电脑被我玩坏了，重新配置了一遍环境，就简单的记录了一下…</a></li>
+    </ul>
+  </li>
+  <li><a href="#若git-没有设置username和email-输入-引号中是值进行配置" id="markdown-toc-若git-没有设置username和email-输入-引号中是值进行配置">若git 没有设置username和email ,输入 (引号中是值)进行配置</a></li>
+</ul>
+
+<h4 id="1下载并安装rubyinstaller--rubyinstaller-点击后出现下图">1.下载并安装rubyinstaller  <a href="http://rubyinstaller.org/downloads/">rubyinstaller </a>（点击后出现下图）</h4>
+<p><img src="/styles/images/win10-jekyll-environment-build/1.png" width="757" align="center" /></p>
+
+<h4 id="2验证ruby-安装是否成功打开cmdwinr-输入cmd打开后输入">2.验证ruby 安装是否成功，打开cmd(win+R 输入CMD),打开后输入</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby -v
+</code></pre></div></div>
+<p>(出现下图则安装成功)
+<img src="/styles/images/win10-jekyll-environment-build/2.png" width="757" align="center" /></p>
+
+<h4 id="3下载devkit点击上方rubyinstaller在页面下面即可下载解压完成后找到文件夹点击文件夹后按住shift右键选择从此处">3.下载DevKit（点击上方rubyinstaller在页面下面即可下载），解压完成后找到文件夹（点击文件夹后，按住shift+右键，选择从此处</h4>
+<p>打开命令窗口），输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby dk .rb init
+</code></pre></div></div>
+<p>再输入</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby dk .rb install
+</code></pre></div></div>
+<p><img src="/styles/images/win10-jekyll-environment-build/3.png" width="757" align="center" /></p>
+
+<h4 id="4安装jekyll-在当前命令窗口输入命令">4.安装jekyll 在当前命令窗口输入命令</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install jekyll
+</code></pre></div></div>
+
+<h4 id="5验证jekyll安装是否成功cmd输入命令">5.验证jekyll安装是否成功，cmd输入命令</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll --version
+</code></pre></div></div>
+
+<h5 id="ps电脑被我玩坏了重新配置了一遍环境就简单的记录了一下">ps:电脑被我玩坏了，重新配置了一遍环境，就简单的记录了一下…</h5>
+<h4 id="若git-没有设置username和email-输入-引号中是值进行配置">若git 没有设置username和email ,输入 (引号中是值)进行配置</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global user.name "username"
+git config --global user.email "email"
+</code></pre></div></div>
+
+<p>​</p>
+
+:ET

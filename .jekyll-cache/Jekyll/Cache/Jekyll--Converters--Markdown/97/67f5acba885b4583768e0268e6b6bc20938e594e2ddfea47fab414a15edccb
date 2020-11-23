@@ -1,0 +1,37 @@
+I"4
+<ol>
+  <li>
+    <p>整型相乘要考虑范围，小数运算结果有问题</p>
+  </li>
+  <li>
+    <p>| 与||   &amp;与&amp;&amp; 区别</p>
+
+    <blockquote>
+      <p>虽然都是 “或” 或者 “与” 的关系，但是| &amp;，再进行判断结束后还进行 “| &amp;”  我们的运算</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>异或\^：两个相同为false，两个不同为true</p>
+  </li>
+  <li>
+    <p>每个函数里面只能有一个可变长度的参数，用… 表示</p>
+
+    <blockquote>
+      <p>public static int max(int min, int … a){
+int max = min;
+for(int i=0;i&lt;a.length;i++){
+			if(max&lt;a[i]){
+					max = a[i];
+			}
+}
+return max;
+}</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>同一个类中函数名相同，参数不同，叫做函数重载</p>
+  </li>
+  <li></li>
+</ol>
+
+:ET

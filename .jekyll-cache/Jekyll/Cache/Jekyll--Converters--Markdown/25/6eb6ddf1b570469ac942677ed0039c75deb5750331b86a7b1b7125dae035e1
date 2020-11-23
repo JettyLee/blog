@@ -1,0 +1,33 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#java数值范围" id="markdown-toc-java数值范围">java数值范围</a></li>
+  <li><a href="#运算符号" id="markdown-toc-运算符号">运算符号%</a></li>
+  <li><a href="#简捷运算符------" id="markdown-toc-简捷运算符------">简捷运算符 += -= *= /= %=</a></li>
+  <li><a href="#自增自减--" id="markdown-toc-自增自减--">自增自减 ++ –</a></li>
+</ul>
+
+<h5 id="java数值范围">java数值范围</h5>
+<blockquote>
+  <p>byte:-128(-2^7)~127(2^7-1)
+<br />&gt;short:-32768(-2^15)~32767(2^15-1)
+<br />&gt;int:-32768(-2^15)~32767(2^15-1)
+<br />&gt;long:-9223372036854775808(-2^63)~9223372036854775807(2^63-1)</p>
+</blockquote>
+
+<h5 id="运算符号">运算符号%</h5>
+<blockquote>
+  <p>%取余运算，可以用在正整数、负整数和浮点值
+<br />%只有在被除数为负值时，结果才是负的</p>
+</blockquote>
+
+<h5 id="简捷运算符------">简捷运算符 += -= *= /= %=</h5>
+<blockquote>
+  <p>例 a+=8  ===&gt;  a=a+8
+<br />在System.out.println(a+=8); 会异常 此时a+=8 是一个表达式</p>
+</blockquote>
+
+<h5 id="自增自减--">自增自减 ++ –</h5>
+<blockquote>
+  <p>参与其他运算时，符号在左 先自增或先自减 ，否则先运算；</p>
+</blockquote>
+
+:ET

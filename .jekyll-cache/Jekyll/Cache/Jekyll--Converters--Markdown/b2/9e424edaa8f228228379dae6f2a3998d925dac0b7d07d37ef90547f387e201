@@ -1,0 +1,211 @@
+I"t)<ul id="markdown-toc">
+  <li><a href="#微盟-谢茂森讲解" id="markdown-toc-微盟-谢茂森讲解">微盟 谢茂森讲解</a>    <ul>
+      <li><a href="#背景" id="markdown-toc-背景">背景</a>        <ul>
+          <li><a href="#为什么说难于维护和扩展" id="markdown-toc-为什么说难于维护和扩展">为什么说难于维护和扩展？</a>            <ul>
+              <li><a href="#架构层面" id="markdown-toc-架构层面">架构层面</a></li>
+              <li><a href="#监控层面" id="markdown-toc-监控层面">监控层面</a></li>
+              <li><a href="#发展层面" id="markdown-toc-发展层面">发展层面</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#治理工作" id="markdown-toc-治理工作">治理工作</a>        <ul>
+          <li><a href="#1业务拆分" id="markdown-toc-1业务拆分">1.业务拆分</a></li>
+          <li><a href="#2soa架构" id="markdown-toc-2soa架构">2.soa架构</a>            <ul>
+              <li><a href="#核心技术体系" id="markdown-toc-核心技术体系">核心技术体系</a>                <ul>
+                  <li><a href="#1-rpc框架" id="markdown-toc-1-rpc框架">1. RPC框架</a></li>
+                  <li><a href="#2-注册中心" id="markdown-toc-2-注册中心">2. 注册中心</a></li>
+                  <li><a href="#3-服务管理" id="markdown-toc-3-服务管理">3. 服务管理</a></li>
+                  <li><a href="#4-配置中心" id="markdown-toc-4-配置中心">4. 配置中心</a></li>
+                  <li><a href="#5-监控中心" id="markdown-toc-5-监控中心">5. 监控中心</a></li>
+                  <li><a href="#6-发布系统" id="markdown-toc-6-发布系统">6. 发布系统</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#3治理过程" id="markdown-toc-3治理过程">3.治理过程</a></li>
+          <li><a href="#4治理技术细节" id="markdown-toc-4治理技术细节">4.治理技术细节</a>            <ul>
+              <li><a href="#1soa-proxy--访问代理" id="markdown-toc-1soa-proxy--访问代理">1)SOA-Proxy  (访问代理)</a></li>
+              <li><a href="#2soa-4层架构" id="markdown-toc-2soa-4层架构">2)SOA 4层架构</a></li>
+              <li><a href="#3业务异常体系细节" id="markdown-toc-3业务异常体系细节">3)业务异常体系细节</a></li>
+              <li><a href="#4采用云平台" id="markdown-toc-4采用云平台">4)采用云平台</a></li>
+              <li><a href="#5服务降级" id="markdown-toc-5服务降级">5)服务降级</a></li>
+              <li><a href="#6实时监控" id="markdown-toc-6实时监控">6)实时监控</a></li>
+              <li><a href="#7应用错误信息具体接口调用链" id="markdown-toc-7应用错误信息具体接口调用链">7)应用错误信息、具体接口调用链</a></li>
+              <li><a href="#8接口日志" id="markdown-toc-8接口日志">8)接口日志</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#ppt" id="markdown-toc-ppt">PPT</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="微盟-谢茂森讲解">微盟 谢茂森讲解</h2>
+
+<h3 id="背景">背景</h3>
+
+<p>初创企业缺钱、缺人，面对海量业务增长，只能选用熟悉的技术去应对。
+同时就会造成系统的异构，同时一旦业务量达到一定的量级，系统就很难去维护和扩展。</p>
+
+<h4 id="为什么说难于维护和扩展">为什么说难于维护和扩展？</h4>
+
+<h5 id="架构层面">架构层面</h5>
+
+<blockquote>
+  <p>1.数据公用，易一崩全崩；
+<br />2.接口乱，无法响应高并发的请求；</p>
+</blockquote>
+
+<h5 id="监控层面">监控层面</h5>
+
+<blockquote>
+  <p>主要是没有统一监控中心，没有办法全面详尽的监控系统性能。</p>
+</blockquote>
+
+<h5 id="发展层面">发展层面</h5>
+
+<blockquote>
+  <p>企业积累层面多个技术栈造成技术交流差，没有有效积累。</p>
+</blockquote>
+
+<h3 id="治理工作">治理工作</h3>
+
+<h4 id="1业务拆分">1.业务拆分</h4>
+<p>分为核心模块(商品、订单、用户、支付)和业务模块</p>
+
+<h4 id="2soa架构">2.soa架构</h4>
+<blockquote>
+  <p>选用JAVA 技术栈为主要技术栈，因为java开发比较好招聘，而且到岗率较高。</p>
+</blockquote>
+
+<h5 id="核心技术体系">核心技术体系</h5>
+
+<h6 id="1-rpc框架">1. RPC框架</h6>
+
+<blockquote>
+  <p>选用<a href="http://dubbo.io/"><b>DUBBO</b></a>是一个分布式服务框架，致力于提供高性能和透明化的RPC远程服务调用方案</p>
+</blockquote>
+
+<h6 id="2-注册中心">2. 注册中心</h6>
+
+<h6 id="3-服务管理">3. 服务管理</h6>
+
+<h6 id="4-配置中心">4. 配置中心</h6>
+<blockquote>
+  <p>因为要求按需定制，所以自行开发</p>
+</blockquote>
+
+<h6 id="5-监控中心">5. 监控中心</h6>
+<blockquote>
+  <p>选用大众点评的<a href="https://github.com/dianping/cat"><b>CAT</b></a>基于Java开发的实时应用监控平台，包括实时应用监控，业务监控。</p>
+</blockquote>
+
+<h6 id="6-发布系统">6. 发布系统</h6>
+<blockquote>
+  <p>选用开源项目<a href=" https://github.com/peritor/webistrano"><b>webistrano</b></a>
+<br />1) 支持多种语言(未治理前技术栈多种)
+<br />2) 支持灰度发布及回滚</p>
+</blockquote>
+
+<h4 id="3治理过程">3.治理过程</h4>
+<blockquote>
+  <p>制定治理手册便于员工了解，注：小公司甚至可以贴出来</p>
+</blockquote>
+
+<h4 id="4治理技术细节">4.治理技术细节</h4>
+
+<h5 id="1soa-proxy--访问代理">1)SOA-Proxy  (访问代理)</h5>
+
+<blockquote>
+  <p>1》为非JAVA语言提供接入
+<br />
+2》实现系统逐步重构迁移</p>
+</blockquote>
+
+<h5 id="2soa-4层架构">2)SOA 4层架构</h5>
+
+<blockquote>
+  <p>consumer(消费端应用)
+<br />==&gt;client(为上级提供接口依赖)
+<br />==&gt;interface(上级生成服务代理、下级服务注册)
+<br />==&gt;server(处理业务)
+<br />==&gt;provider</p>
+</blockquote>
+
+<h5 id="3业务异常体系细节">3)业务异常体系细节</h5>
+
+<blockquote>
+  <p>1》 错误码集中管理
+<br />2》 错误信息要明确</p>
+</blockquote>
+
+<h5 id="4采用云平台">4)采用云平台</h5>
+
+<h5 id="5服务降级">5)服务降级</h5>
+
+<blockquote>
+  <p>考虑核心，倒三角模型</p>
+</blockquote>
+
+<h5 id="6实时监控">6)实时监控</h5>
+
+<blockquote>
+  <p>1》 要图形化 (图表)
+<br />2》 要量级化 (数字)</p>
+</blockquote>
+
+<h5 id="7应用错误信息具体接口调用链">7)应用错误信息、具体接口调用链</h5>
+
+<blockquote>
+  <p>要详尽</p>
+</blockquote>
+
+<h5 id="8接口日志">8)接口日志</h5>
+
+<blockquote>
+  <p>1》 要提供多种方式查询
+<br />2》 日志要包含各种详细信息(详见最后一夜PPT)</p>
+</blockquote>
+
+<hr />
+
+<h3 id="ppt">PPT</h3>
+
+<p><img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-0.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-1.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-2.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-3.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-4.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-5.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-6.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-7.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-8.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-9.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-10.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-11.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-12.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-13.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-14.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-15.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-16.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-17.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-18.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-19.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-20.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-21.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-22.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-23.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-24.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-25.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-26.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-27.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-28.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-29.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-30.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-31.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-32.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/md/34c53c7b3a9ad8c08173a75cad729936-33.jpg" width="757" alt="ppt" align="center" /></p>
+
+:ET

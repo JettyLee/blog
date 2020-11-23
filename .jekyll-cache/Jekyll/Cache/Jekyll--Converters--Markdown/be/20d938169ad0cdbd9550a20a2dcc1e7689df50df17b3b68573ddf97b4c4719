@@ -1,0 +1,27 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#1确认win10系统开启hyper-v如何开启看这里" id="markdown-toc-1确认win10系统开启hyper-v如何开启看这里">1.确认WIN10系统开启Hyper-V,如何开启<a href="http://jingyan.baidu.com/article/86fae346c9311e3c49121aa9.html">看这里</a></a></li>
+  <li><a href="#2下载安装dockerps我安装的stable版-点这里" id="markdown-toc-2下载安装dockerps我安装的stable版-点这里">2.下载安装docker(ps:我安装的stable版) <a href="https://www.docker.com/community-edition#/download">点这里</a></a></li>
+  <li><a href="#验证安装--cmd--docker-info" id="markdown-toc-验证安装--cmd--docker-info">验证安装  cmd  docker info</a></li>
+  <li><a href="#3下载安装docker-toolboxps主要想要用kitematic可视化管理docker-点这里" id="markdown-toc-3下载安装docker-toolboxps主要想要用kitematic可视化管理docker-点这里">3.下载安装docker-toolbox(ps:主要想要用kitematic可视化管理docker) <a href="https://www.docker.com/products/docker-toolbox">点这里</a></a></li>
+  <li><a href="#启动一个nginx容器" id="markdown-toc-启动一个nginx容器">启动一个nginx容器</a></li>
+</ul>
+<h5 id="1确认win10系统开启hyper-v如何开启看这里">1.确认WIN10系统开启Hyper-V,如何开启<a href="http://jingyan.baidu.com/article/86fae346c9311e3c49121aa9.html">看这里</a></h5>
+
+<hr />
+
+<h5 id="2下载安装dockerps我安装的stable版-点这里">2.下载安装docker(ps:我安装的stable版) <a href="https://www.docker.com/community-edition#/download">点这里</a></h5>
+<h5 id="验证安装--cmd--docker-info">验证安装  cmd  docker info</h5>
+<h5 id="3下载安装docker-toolboxps主要想要用kitematic可视化管理docker-点这里">3.下载安装docker-toolbox(ps:主要想要用kitematic可视化管理docker) <a href="https://www.docker.com/products/docker-toolbox">点这里</a></h5>
+<p>依次安装就可以用了</p>
+<h5 id="启动一个nginx容器">启动一个nginx容器</h5>
+<blockquote>
+  <p>docker run -d -p 81:80 –name webserver nginx	
+<br />
+浏览器地址框，输入http://localhost:81/ 即可验证</p>
+</blockquote>
+
+<p>ps: 唉，这么简单，我电脑重装了5次——————-旧书害人</p>
+
+<p>​</p>
+
+:ET

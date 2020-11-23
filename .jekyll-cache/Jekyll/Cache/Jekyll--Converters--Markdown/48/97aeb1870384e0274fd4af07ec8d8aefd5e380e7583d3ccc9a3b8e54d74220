@@ -1,0 +1,50 @@
+I"A<ul id="markdown-toc">
+  <li><a href="#悲观锁" id="markdown-toc-悲观锁">悲观锁</a></li>
+  <li><a href="#乐观锁" id="markdown-toc-乐观锁">乐观锁</a></li>
+  <li><a href="#时间戳限制重入的乐观锁" id="markdown-toc-时间戳限制重入的乐观锁">时间戳限制重入的乐观锁</a></li>
+  <li><a href="#使用限定次数重入的乐观锁" id="markdown-toc-使用限定次数重入的乐观锁">使用限定次数重入的乐观锁</a></li>
+</ul>
+<h4 id="悲观锁">悲观锁</h4>
+
+<blockquote>
+  <p>SQL 最后加入 for update 语句</p>
+</blockquote>
+
+<h4 id="乐观锁">乐观锁</h4>
+
+<blockquote>
+  <p>利用数据库 字段 version 控制</p>
+</blockquote>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">update</span>  <span class="o">**</span>  <span class="k">set</span> <span class="k">version</span> <span class="o">=</span><span class="k">version</span><span class="o">+</span><span class="mi">1</span> <span class="k">where</span> <span class="k">version</span> <span class="o">=#</span><span class="err">{</span><span class="k">version</span><span class="err">}</span>
+</code></pre></div></div>
+
+<h4 id="时间戳限制重入的乐观锁">时间戳限制重入的乐观锁</h4>
+
+<blockquote>
+  <p>先将事务设置读写提交</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">long</span> <span class="n">start</span><span class="o">=</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+    <span class="kt">long</span> <span class="n">end</span><span class="o">=</span><span class="nc">System</span><span class="o">.</span><span class="na">currenTimeMillis</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">&gt;</span><span class="mi">100</span><span class="o">){</span><span class="c1">//100 ms </span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="o">...</span>
+    <span class="kt">int</span> <span class="n">result</span><span class="o">=</span><span class="n">操作数据库</span><span class="o">;</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">result</span><span class="o">==</span><span class="mi">0</span><span class="o">){</span>
+        <span class="k">continue</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="使用限定次数重入的乐观锁">使用限定次数重入的乐观锁</h4>
+
+<blockquote>
+  <p>注：不论是时间戳还是限定次数，只是为了减低失败的次数</p>
+</blockquote>
+
+:ET

@@ -1,0 +1,432 @@
+I"�3<ul id="markdown-toc">
+  <li><a href="#1标题" id="markdown-toc-1标题">1.标题</a></li>
+  <li><a href="#2引用" id="markdown-toc-2引用">2.引用</a></li>
+  <li><a href="#3标记" id="markdown-toc-3标记">3.标记</a></li>
+  <li><a href="#4代码块" id="markdown-toc-4代码块">4.代码块</a></li>
+  <li><a href="#5链接" id="markdown-toc-5链接">5.链接</a></li>
+  <li><a href="#6插入图片" id="markdown-toc-6插入图片">6.插入图片</a></li>
+  <li><a href="#7序表" id="markdown-toc-7序表">7.序表</a>    <ul>
+      <li><a href="#71有序列表" id="markdown-toc-71有序列表">7.1有序列表</a></li>
+    </ul>
+  </li>
+  <li><a href="#8语义标记" id="markdown-toc-8语义标记">8.语义标记</a></li>
+  <li><a href="#9语义标签" id="markdown-toc-9语义标签">9.语义标签</a></li>
+  <li><a href="#10脚注" id="markdown-toc-10脚注">10.脚注</a></li>
+  <li><a href="#11流程图" id="markdown-toc-11流程图">11.流程图</a></li>
+  <li><a href="#12-时序图" id="markdown-toc-12-时序图">12. 时序图</a></li>
+</ul>
+
+<h3 id="1标题">1.标题</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># h1
+## h2
+### h3
+#### h4
+##### h5
+###### h6
+</code></pre></div></div>
+
+<h3 id="2引用">2.引用</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt;hello world!</span>
+</code></pre></div></div>
+
+<p><strong><em>演示</em></strong></p>
+
+<blockquote>
+  <p>hello world !</p>
+</blockquote>
+
+<h3 id="3标记">3.标记</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello <span class="sb">`world`</span> !
+</code></pre></div></div>
+
+<p><strong><em>演示</em></strong></p>
+
+<blockquote>
+  <p>hello <code class="language-plaintext highlighter-rouge">world</code> !</p>
+</blockquote>
+
+<h3 id="4代码块">4.代码块</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>​<span class="sb">```</span> hello world!
+</code></pre></div></div>
+
+<p><strong><em>演示</em></strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello world!
+</code></pre></div></div>
+
+<h3 id="5链接">5.链接</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nv">百度1</span><span class="p">](</span><span class="sx">http://www.baidu.com/"</span> 百度一下"){:target="_blank"}  
+</code></pre></div></div>
+
+<p><strong><em>演示</em></strong></p>
+
+<p><a href="http://www.baidu.com/&quot; 百度一下&quot;" target="_blank">百度1</a></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nv">百度2</span><span class="p">][</span><span class="ss">2</span><span class="p">]</span>{:target="_blank"}
+<span class="p">[</span><span class="ss">2</span><span class="p">]:</span> <span class="sx">http://www.baidu.com/</span>   <span class="nn">"百度二下"</span>
+</code></pre></div></div>
+
+<p><strong><em>演示</em></strong></p>
+
+<p><a href="http://www.baidu.com/" title="百度二下" target="_blank">百度2</a></p>
+
+<h3 id="6插入图片">6.插入图片</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![](</span><span class="sx">../styles/images/favicon.jpg</span> <span class="nn">'描述'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong><em>演示</em></strong></p>
+
+<p><img src="../styles/images/favicon.jpg" alt="" title="logo" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![name][01]
+[01]:../styles/images/favicon.jpg '描述'
+</code></pre></div></div>
+
+<p><strong><em>演示</em></strong></p>
+
+<p><img src="../styles/images/favicon.jpg" alt="name" title="描述" /></p>
+
+<h3 id="7序表">7.序表</h3>
+
+<h4 id="71有序列表">7.1有序列表</h4>
+
+<blockquote>
+  <p>序列 . 后 保持空格</p>
+</blockquote>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> one
+<span class="p">2.</span> two
+<span class="p">3.</span> three
+</code></pre></div></div>
+
+<p><strong><em>演示</em></strong></p>
+
+<ol>
+  <li>one</li>
+  <li>two</li>
+  <li>three</li>
+</ol>
+
+<p>####7.2无序列表</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* one
+* two
+* three
+</code></pre></div></div>
+
+<p><strong><em>演示</em></strong></p>
+
+<ul>
+  <li>one</li>
+  <li>two</li>
+  <li>three</li>
+</ul>
+
+<h3 id="8语义标记">8.语义标记</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>描述</th>
+      <th>效果</th>
+      <th>代码</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>斜体</td>
+      <td><em>斜体</em></td>
+      <td><code class="language-plaintext highlighter-rouge">*斜体*</code></td>
+    </tr>
+    <tr>
+      <td>斜体</td>
+      <td><em>斜体</em></td>
+      <td><code class="language-plaintext highlighter-rouge">_斜体_</code></td>
+    </tr>
+    <tr>
+      <td>加粗</td>
+      <td><strong>加粗</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">**加粗**</code></td>
+    </tr>
+    <tr>
+      <td>加粗+斜体</td>
+      <td><strong>加粗+斜体</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">***加粗+斜体***</code></td>
+    </tr>
+    <tr>
+      <td>加粗+斜体</td>
+      <td><strong>加粗+斜体</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">**_加粗+斜体_**</code></td>
+    </tr>
+    <tr>
+      <td>删除线</td>
+      <td><del>删除线</del></td>
+      <td><code class="language-plaintext highlighter-rouge">~~删除线~~</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="9语义标签">9.语义标签</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>描述</th>
+      <th>效果</th>
+      <th>代码</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>斜体</td>
+      <td><i>斜体</i></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;i&gt;斜体&lt;/i&gt;</code></td>
+    </tr>
+    <tr>
+      <td>加粗</td>
+      <td><b>加粗</b></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;b&gt;加粗&lt;/b&gt;</code></td>
+    </tr>
+    <tr>
+      <td>强调</td>
+      <td><em>强调</em></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;em&gt;强调&lt;/em&gt;</code></td>
+    </tr>
+    <tr>
+      <td>上标</td>
+      <td>Za</td>
+      <td><code class="language-plaintext highlighter-rouge">Z&lt;sup&gt;a&lt;/sup&gt;</code></td>
+    </tr>
+    <tr>
+      <td>下标</td>
+      <td>Za</td>
+      <td><code class="language-plaintext highlighter-rouge">Z&lt;sub&gt;a&lt;/sub&gt;</code></td>
+    </tr>
+    <tr>
+      <td>键盘文本</td>
+      <td><img src="//upload-images.jianshu.io/upload_images/6912209-9f4177c5bfb69ab0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/47" alt="img" /></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;kbd&gt;Ctrl&lt;/kbd&gt;</code></td>
+    </tr>
+    <tr>
+      <td>换行</td>
+      <td> </td>
+      <td>``</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="10脚注">10.脚注</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Markdown[^1]
+[^1]: Markdown是一种纯文本标记语言        // 在文章最后面显示脚注
+</code></pre></div></div>
+
+<p><strong>演示</strong></p>
+
+<p>Markdown[[1]</p>
+
+<h3 id="11流程图">11.流程图</h3>
+
+<p><strong>代码1</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>​```flow                     // 流程
+st=&gt;start: 开始|past:&gt; http://www.baidu.com // 开始
+e=&gt;end: 结束              // 结束
+c1=&gt;condition: 条件1:&gt;http://www.baidu.com[_parent]   // 判断条件
+c2=&gt;condition: 条件2      // 判断条件
+c3=&gt;condition: 条件3      // 判断条件
+io=&gt;inputoutput: 输出     // 输出
+//----------------以上为定义参数-------------------------
+
+//----------------以下为连接参数-------------------------
+// 开始-&gt;判断条件1为no-&gt;判断条件2为no-&gt;判断条件3为no-&gt;输出-&gt;结束
+st-&gt;c1(yes,right)-&gt;c2(yes,right)-&gt;c3(yes,right)-&gt;io-&gt;e
+c1(no)-&gt;e                   // 条件1不满足-&gt;结束
+c2(no)-&gt;e                   // 条件2不满足-&gt;结束
+c3(no)-&gt;e                   // 条件3不满足-&gt;结束
+​```
+</code></pre></div></div>
+
+<p><strong>演示</strong></p>
+
+<pre><code class="language-flow">st=&gt;start: 开始|past:&gt; http://www.baidu.com 
+e=&gt;end: 结束              
+c1=&gt;condition: 条件1:&gt;http://www.baidu.com[_parent]  
+c2=&gt;condition: 条件2     
+c3=&gt;condition: 条件3      // 判断条件
+io=&gt;inputoutput: 输出     // 输出
+
+
+st-&gt;c1(yes,right)-&gt;c2(yes,right)-&gt;c3(yes,right)-&gt;io-&gt;e
+c1(no)-&gt;e                   
+c2(no)-&gt;e                  
+c3(no)-&gt;e                  
+
+</code></pre>
+
+<p>注：** <code class="language-plaintext highlighter-rouge">st=&gt;start: 开始</code> 的<code class="language-plaintext highlighter-rouge">：</code>后面保持空格**</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>形参</th>
+      <th>实参</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>tag</td>
+      <td>st</td>
+      <td>标签 (可以自定义)</td>
+    </tr>
+    <tr>
+      <td>=&gt;</td>
+      <td>=&gt;</td>
+      <td>赋值</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>start</td>
+      <td>类型  (6种类型)</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>开始</td>
+      <td>描述内容 (可以自定义)</td>
+    </tr>
+    <tr>
+      <td>:&gt;url</td>
+      <td><code class="language-plaintext highlighter-rouge">http://www.baidu.com[blank]</code></td>
+      <td>链接与跳转方式 <strong>兼容性很差</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>6种类型</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>start</td>
+      <td>启动</td>
+    </tr>
+    <tr>
+      <td>end</td>
+      <td>结束</td>
+    </tr>
+    <tr>
+      <td>operation</td>
+      <td>程序</td>
+    </tr>
+    <tr>
+      <td>subroutine</td>
+      <td>子程序</td>
+    </tr>
+    <tr>
+      <td>condition</td>
+      <td>条件</td>
+    </tr>
+    <tr>
+      <td>inputoutput</td>
+      <td>输出</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>连接示例：</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>st-&gt;c1(yes,right)-&gt;c2(yes,right)-&gt;c3(yes,right)-&gt;io-&gt;e
+开始-&gt;判断条件1为no-&gt;判断条件2为no-&gt;判断条件3为no-&gt;输出-&gt;结束
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>形参</th>
+      <th>实参</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-&gt;</td>
+      <td>-&gt;</td>
+      <td>连接</td>
+    </tr>
+    <tr>
+      <td>condition</td>
+      <td>c1</td>
+      <td>条件</td>
+    </tr>
+    <tr>
+      <td>(布尔值,方向)</td>
+      <td>(yes,right)</td>
+      <td>如果满足向右连接，4种方向：right ，left，up ，down 默认为：down</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>注：operation (程序); subroutine (子程序) ;condition (条件)，都可以在括号里加入连接方向。</p>
+
+<h3 id="12-时序图">12. 时序图</h3>
+
+<p><strong>代码1</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>​```sequence
+A-&gt;&gt;B: 你好
+Note left of A: 我在左边     // 注释方向，只有左右，没有上下
+Note right of B: 我在右边
+B--&gt;A: 很高兴认识你
+​```
+</code></pre></div></div>
+
+<pre><code class="language-sequence">A-&gt;&gt;B: 你好
+Note left of A: 我在左边     // 注释方向，只有左右，没有上下
+Note right of B: 我在右边
+B--&gt;A: 很高兴认识你
+</code></pre>
+
+<p>注：<code class="language-plaintext highlighter-rouge">A-&gt;&gt;B: 你好</code>   后面可以不写文字，但是一定要在最后加上<code class="language-plaintext highlighter-rouge">：</code>
+ Note left of A 代表注释在A的左边</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>符号</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td>实线</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&gt;</code></td>
+      <td>实心箭头</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--</code></td>
+      <td>虚线</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&gt;&gt;</code></td>
+      <td>空心箭头</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="https://www.jianshu.com/p/b03a8d7b1719" title="[欧薇娅](https://www.jianshu.com/u/5c6cf93d5419) " target="_blank">感谢原文作者：欧薇娅</a></p>
+
+:ET

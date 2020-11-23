@@ -1,0 +1,143 @@
+I"@<ul id="markdown-toc">
+  <li><a href="#阿里-徐晓斌桑植讲解" id="markdown-toc-阿里-徐晓斌桑植讲解">阿里 徐晓斌、桑植讲解</a></li>
+  <li><a href="#基础架构" id="markdown-toc-基础架构">基础架构</a>    <ul>
+      <li><a href="#基础技术栈" id="markdown-toc-基础技术栈">基础技术栈</a></li>
+      <li><a href="#区域内架构" id="markdown-toc-区域内架构">区域内架构</a></li>
+      <li><a href="#跨区域通讯" id="markdown-toc-跨区域通讯">跨区域通讯</a></li>
+      <li><a href="#区域的配置" id="markdown-toc-区域的配置">区域的配置</a></li>
+      <li><a href="#采用微服务" id="markdown-toc-采用微服务">采用微服务</a></li>
+      <li><a href="#接口数据传输对象处理" id="markdown-toc-接口数据传输对象处理">接口、数据传输对象处理</a></li>
+    </ul>
+  </li>
+  <li><a href="#区域化部署实践" id="markdown-toc-区域化部署实践">区域化部署实践</a>    <ul>
+      <li><a href="#区域化架构" id="markdown-toc-区域化架构">区域化架构</a></li>
+      <li><a href="#用户路由表设计" id="markdown-toc-用户路由表设计">用户路由表设计</a></li>
+      <li><a href="#数据一致性保证" id="markdown-toc-数据一致性保证">数据一致性保证</a>        <ul>
+          <li><a href="#日常访问一致性" id="markdown-toc-日常访问一致性">日常访问一致性</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="阿里-徐晓斌桑植讲解">阿里 徐晓斌、桑植讲解</h3>
+
+<h2 id="基础架构">基础架构</h2>
+
+<h3 id="基础技术栈">基础技术栈</h3>
+
+<blockquote>
+  <p>语言：JAVA8
+<br />版本控制：Git&amp;Gitlab
+<br />构建：Apache Maven 3
+<br />基础框架：Spring Boot
+<br />Web框架：Spring MVC
+<br />HTTP服务器：<b><a href="http://tengine.taobao.org/">Tengine</a></b>(nginx)
+<br />通讯协议： HSF
+<br />消息框架：<b><a href="http://code.taobao.org/p/metaq/src/"> MetaQ</a></b>
+<br />统一的发布系统： Aone</p>
+</blockquote>
+
+<h3 id="区域内架构">区域内架构</h3>
+
+<blockquote>
+  <p>WEB层   webApp 
+<br />服务层 	webService
+<br />WEB层和服务层由 MQ 和 HSF 分发
+<br />缓存层	<b><a href="https://github.com/alibaba/tair"> Tair</a></b>	
+<br />数据层	DB、HBase、NoSql</p>
+</blockquote>
+
+<h3 id="跨区域通讯">跨区域通讯</h3>
+<blockquote>
+  <p>通过路由</p>
+</blockquote>
+
+<h3 id="区域的配置">区域的配置</h3>
+<blockquote>
+  <p>利用springboot 为每个服务保存单独配置</p>
+</blockquote>
+
+<h3 id="采用微服务">采用微服务</h3>
+
+<h3 id="接口数据传输对象处理">接口、数据传输对象处理</h3>
+<blockquote>
+  <p>1.创建单独版本管理
+<br />2.由于维护成本高，发布前需要review</p>
+</blockquote>
+
+<h2 id="区域化部署实践">区域化部署实践</h2>
+
+<h3 id="区域化架构">区域化架构</h3>
+<blockquote>
+  <p>1.各级路由
+<br /> 2.采用<b><a href="https://github.com/alibaba/tb_tddl">tddl</a></b>读写保护
+<br /> 3.采用<b><a href="https://github.com/alibaba/tair"> Tair</a></b>对路由表数据缓存
+<br /> 4.采用自研DRC数据同步</p>
+</blockquote>
+
+<h3 id="用户路由表设计">用户路由表设计</h3>
+<blockquote>
+  <p>由区域和状态构成，两个用户一个字节(例如：101 region 0 state)
+<br />查找用户过程：
+<br />If UserId = x, index=x/(1024<em>10000</em>2)找到行
+<br />byte=Slot[index][x%(1024<em>10000</em>2)] 找到字节
+<br />RegionInfo=byte [x%2]找到用户</p>
+</blockquote>
+
+<h3 id="数据一致性保证">数据一致性保证</h3>
+
+<h4 id="日常访问一致性">日常访问一致性</h4>
+
+<p>多地路由表数据一致性</p>
+
+<blockquote>
+  <p>主要通过Tair去维护每个路由表的版本号，来控制一致性</p>
+</blockquote>
+
+<p>用户路由变更一致性</p>
+
+<blockquote>
+  <p>让用户停写，然后秒级切换</p>
+</blockquote>
+
+<p>异地容灾一致性</p>
+
+<blockquote>
+  <p>1.原机房的禁写，流量切换灾备机房
+<br />2.原机房恢复，DRC数据同步
+<br />3.通过时间戳判断DRC同步时间节点和灾害时间节点，来确定是否可以取消禁写
+<br />4.切换时也要考虑就近原则(跨境地理问题，国家数据限制同样要考虑)</p>
+</blockquote>
+
+<hr />
+<p>PPT如下：</p>
+
+<p><img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-0.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-1.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-2.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-3.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-4.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-5.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-6.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-7.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-8.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-9.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-10.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-11.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-12.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-13.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-14.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-15.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-16.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-17.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-18.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-19.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-20.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-21.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-22.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-23.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-24.jpg" width="757" alt="ppt" align="center" />
+<img src="/styles/images/kjds/1ab2581bcee5ad103c828c97d913ad90-25.jpg" width="757" alt="ppt" align="center" /></p>
+
+:ET

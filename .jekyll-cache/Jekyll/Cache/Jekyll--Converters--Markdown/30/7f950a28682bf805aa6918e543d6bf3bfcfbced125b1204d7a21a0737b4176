@@ -1,0 +1,120 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#1引用jarmaven配置" id="markdown-toc-1引用jarmaven配置">1.引用jar(maven配置)</a></li>
+  <li><a href="#2创建自定义配置类" id="markdown-toc-2创建自定义配置类">2.创建自定义配置类</a></li>
+  <li><a href="#3spring-mvcxml-配置bean" id="markdown-toc-3spring-mvcxml-配置bean">3.spring-mvc.xml 配置bean</a></li>
+  <li><a href="#4swagger-注解" id="markdown-toc-4swagger-注解">4.swagger 注解</a></li>
+  <li><a href="#5springmvc-中使用" id="markdown-toc-5springmvc-中使用">5.springmvc 中使用</a></li>
+</ul>
+
+<h4 id="1引用jarmaven配置">1.引用jar(maven配置)</h4>
+
+<blockquote>
+  <p>一定要注意版本号</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+    &lt;version&gt;2.4.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+    &lt;version&gt;2.4.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<h4 id="2创建自定义配置类">2.创建自定义配置类</h4>
+
+<blockquote>
+  <p>basePackage 写action包名或者controller包名</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import org.springframework.context.annotation.Bean<span class="p">;</span>  
+import org.springframework.context.annotation.ComponentScan<span class="p">;</span>  
+import org.springframework.context.annotation.Configuration<span class="p">;</span>  
+import org.springframework.web.servlet.config.annotation.EnableWebMvc<span class="p">;</span>  
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport<span class="p">;</span>  
+import springfox.documentation.builders.ApiInfoBuilder<span class="p">;</span>  
+import springfox.documentation.builders.PathSelectors<span class="p">;</span>  
+import springfox.documentation.builders.RequestHandlerSelectors<span class="p">;</span>  
+import springfox.documentation.service.ApiInfo<span class="p">;</span>  
+import springfox.documentation.spi.DocumentationType<span class="p">;</span>  
+import springfox.documentation.spring.web.plugins.Docket<span class="p">;</span>  
+import springfox.documentation.swagger2.annotations.EnableSwagger2<span class="p">;</span>  
+/<span class="k">*</span> 
+ <span class="k">*</span> Restful API 访问路径: 
+ <span class="k">*</span> http://IP:port/<span class="o">{</span>context-path<span class="o">}</span>/swagger-ui.html 
+ <span class="k">*</span> eg:http://localhost:8080/runner/swagger-ui.html 
+ <span class="k">*</span>/  
+@EnableWebMvc  
+@EnableSwagger2  
+@ComponentScan<span class="o">(</span>basePackages <span class="o">=</span> <span class="o">{</span><span class="s2">"*.controller"</span><span class="o">})</span>  
+@Configuration  
+public class SwaggerConfig2 extends WebMvcConfigurationSupport<span class="o">{</span>  
+
+	@Bean  
+    public Docket createRestApi<span class="o">()</span> <span class="o">{</span>  
+	      
+	        <span class="k">return </span>new Docket<span class="o">(</span>DocumentationType.SWAGGER_2<span class="o">)</span>  
+                        .apiInfo<span class="o">(</span>apiInfo<span class="o">())</span>  
+            	        .select<span class="o">()</span>  
+                        .apis<span class="o">(</span>RequestHandlerSelectors.basePackage<span class="o">(</span><span class="s2">"*.controller"</span><span class="o">))</span>  
+                        .paths<span class="o">(</span>PathSelectors.any<span class="o">())</span>  
+                        .build<span class="o">()</span><span class="p">;</span>  
+			<span class="o">}</span>  
+	private ApiInfo apiInfo<span class="o">()</span> <span class="o">{</span>  
+
+			<span class="k">return </span>new ApiInfoBuilder<span class="o">()</span>  
+						.title<span class="o">(</span><span class="s2">"标题"</span><span class="o">)</span>  
+						.termsOfServiceUrl<span class="o">(</span><span class="s2">"http://www.jetty.cn"</span><span class="o">)</span>  
+						.contact<span class="o">(</span><span class="s2">"内容简介"</span><span class="o">)</span>  
+						.version<span class="o">(</span><span class="s2">"版本"</span><span class="o">)</span>  
+						.build<span class="o">()</span><span class="p">;</span>  
+			<span class="o">}</span>  
+
+<span class="o">}</span>  
+</code></pre></div></div>
+
+<h4 id="3spring-mvcxml-配置bean">3.spring-mvc.xml 配置bean</h4>
+
+<blockquote>
+  <p>class的位置写自己配置类的地址</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>			&lt;bean <span class="nv">class</span><span class="o">=</span><span class="s2">"*.SwaggerConfig2"</span> /&gt; 
+</code></pre></div></div>
+
+<p>​</p>
+
+<h4 id="4swagger-注解">4.swagger 注解</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//分类
+@Api<span class="o">(</span>tags <span class="o">=</span> <span class="o">{</span> <span class="s2">"***"</span> <span class="o">})</span>
+
+//请求描述
+@ApiOperation<span class="o">(</span>value <span class="o">=</span> <span class="s2">"***"</span>, notes <span class="o">=</span> <span class="s2">"***"</span>,httpMethod<span class="o">=</span><span class="s2">"POST"</span>,
+<span class="nv">produces</span><span class="o">=</span>MediaType.APPLICATION_JSON_UTF8_VALUE<span class="o">)</span>
+
+//请求参数
+@ApiParam<span class="o">(</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"***"</span>,value<span class="o">=</span><span class="s2">"***"</span>,required<span class="o">=</span><span class="nb">true</span><span class="o">)</span>
+
+//忽略api
+@ApiIgnore
+</code></pre></div></div>
+
+<h4 id="5springmvc-中使用">5.springmvc 中使用</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@ApiOperation<span class="o">(</span>value <span class="o">=</span> <span class="s2">"增加活动访问量"</span>, notes <span class="o">=</span> <span class="s2">"增加活动访问量"</span>, httpMethod <span class="o">=</span> <span class="s2">"POST"</span><span class="o">)</span>
+@RequestMapping<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="s2">"/addActivityVisitNum"</span>,method <span class="o">=</span> RequestMethod.POST<span class="o">)</span>
+public BaseModelJson&lt;Integer&gt; addActivityVisitNum<span class="o">(</span>
+    	@ApiParam<span class="o">(</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"token"</span>,value<span class="o">=</span><span class="s2">"请求密钥"</span>,required<span class="o">=</span><span class="nb">true</span><span class="o">)</span> 
+        @RequestParam<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="s2">"token"</span>,required<span class="o">=</span><span class="nb">true</span><span class="o">)</span> String token,
+    	@ApiParam<span class="o">(</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"id"</span>,value<span class="o">=</span><span class="s2">"活动id"</span>,required<span class="o">=</span><span class="nb">true</span><span class="o">)</span> 
+        @RequestParam<span class="o">(</span><span class="nv">value</span><span class="o">=</span><span class="s2">"id"</span>,required<span class="o">=</span><span class="nb">true</span><span class="o">)</span> String <span class="nb">id</span><span class="o">)</span> <span class="o">{</span>
+            ......
+			｝
+</code></pre></div></div>
+
+:ET

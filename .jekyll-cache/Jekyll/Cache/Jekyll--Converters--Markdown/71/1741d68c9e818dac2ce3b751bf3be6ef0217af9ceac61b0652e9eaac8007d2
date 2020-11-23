@@ -1,0 +1,202 @@
+I"g)<ul id="markdown-toc">
+  <li><a href="#spring-四大原则" id="markdown-toc-spring-四大原则">Spring 四大原则</a></li>
+  <li><a href="#依赖注入" id="markdown-toc-依赖注入">依赖注入</a>    <ul>
+      <li><a href="#声明bean的注解" id="markdown-toc-声明bean的注解">声明Bean的注解：</a></li>
+      <li><a href="#注入bean的注解" id="markdown-toc-注入bean的注解">注入Bean的注解</a></li>
+      <li><a href="#配置类中常用注解" id="markdown-toc-配置类中常用注解">配置类中常用注解</a></li>
+    </ul>
+  </li>
+  <li><a href="#java-配置" id="markdown-toc-java-配置">Java 配置</a></li>
+  <li><a href="#aop" id="markdown-toc-aop">AOP</a>    <ul>
+      <li><a href="#aop面向切面编程相当于oop面向对象编程" id="markdown-toc-aop面向切面编程相当于oop面向对象编程">AOP:面向切面编程，相当于OOP面向对象编程。</a></li>
+      <li><a href="#aspectj" id="markdown-toc-aspectj">AspectJ</a></li>
+    </ul>
+  </li>
+  <li><a href="#maven依赖" id="markdown-toc-maven依赖">Maven依赖</a></li>
+  <li><a href="#元注解" id="markdown-toc-元注解">元注解</a>    <ul>
+      <li><a href="#retention" id="markdown-toc-retention">@Retention</a></li>
+      <li><a href="#target" id="markdown-toc-target">@Target</a></li>
+      <li><a href="#document" id="markdown-toc-document">@Document</a></li>
+      <li><a href="#inherited" id="markdown-toc-inherited">@Inherited</a></li>
+    </ul>
+  </li>
+  <li><a href="#拦截方式" id="markdown-toc-拦截方式">拦截方式</a>    <ul>
+      <li><a href="#1注解式拦截" id="markdown-toc-1注解式拦截">1.注解式拦截</a></li>
+      <li><a href="#2方法规则式拦截" id="markdown-toc-2方法规则式拦截">2.方法规则式拦截</a>        <ul>
+          <li><a href="#关于execution" id="markdown-toc-关于execution">关于execution</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="spring-四大原则">Spring 四大原则</h3>
+
+<p>1.使用POJO进行轻量级和最小侵入式开发；</p>
+
+<blockquote>
+  <p>POJO（Plain Ordinary Java Object）简单的Java对象，实际就是普通JavaBeans，是为了避免和EJB混淆所创造的简称。
+使用POJO名称是为了避免和EJB混淆起来, 而且简称比较直接. 其中有一些属性及其getter setter方法的类,没有业务逻辑，有时可以作为VO(value -object)或dto(Data Transform Object)来使用.当然,如果你有一个简单的运算属性也是可以的,但不允许有业务方法,也不能携带有connection之类的方法。</p>
+</blockquote>
+
+<p>2.通过依赖注入和基于接口编程实现松耦合；</p>
+
+<p>3.通过AOP和默认系统进行声明式编程；</p>
+
+<p>4.使用AOP和模版(template)减少模式化代码；</p>
+
+<h3 id="依赖注入">依赖注入</h3>
+
+<blockquote>
+  <p>控制反转(Inversion of Control-IOC)、依赖注入(dependency injecttion-DI)</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>在Spring 环境中是等同概念，控制反转是通过依赖注入实现的。
+依赖注入目的是为了解耦。以组合的方式替代继承。
+Spring IoC容器(ApplicationContext)负责创建Bean,并通过容器将功能类Bean注入到你需要的Bean中。
+</code></pre></div></div>
+<p>Spring 提供了3种方式实现Bean的创建和管理依赖。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.xml；
+2.Java配置；
+3.groovy配置。
+</code></pre></div></div>
+<h4 id="声明bean的注解">声明Bean的注解：</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.@Component 组件，没有明确的角色
+2.@Service 在业务逻辑层(service层) 使用
+3.@Repository 在数据访问层(dao层) 使用
+4.@Controller 在展示层(MVC--&gt;Spring MVC) 使用
+</code></pre></div></div>
+
+<h4 id="注入bean的注解">注入Bean的注解</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.@Autowired: Spring提供的注解；
+2.@Inject: JSR-330提供的注解；
+3.@Resource: JSR-250提供的注解。
+注：JSR-330和JSR-250 是Java依赖注入标准  三个注解可以注解在set方法上或属性上
+</code></pre></div></div>
+<h4 id="配置类中常用注解">配置类中常用注解</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.@Configuration 声明当前类是一个配置类；
+2.@ComponentScan
+自动扫描包名下所有使用@Service、@Component、@Repository和@Controller的类，并注册为Bean；
+3.@EnableAspectJAutoProxy注解开启Spring对AspectJ代理的支持。
+</code></pre></div></div>
+
+<h3 id="java-配置">Java 配置</h3>
+
+<p>Java配置是Spring 4.x 推荐的配置方式，可以完全替代xml配置；Java配置也是Spring Boot推荐的配置方式。</p>
+
+<p>Java配置是通过@Configuration和@Bean 来实现。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Configuration 声明当前类是一个配置类，相当于一个Spring配置的xml 文件。
+@Bean 注解在方法上，声明当前方法的返回值为一个Bean。
+</code></pre></div></div>
+<h3 id="aop">AOP</h3>
+
+<h4 id="aop面向切面编程相当于oop面向对象编程">AOP:面向切面编程，相当于OOP面向对象编程。</h4>
+
+<blockquote>
+  <p>Spring的AOP目的是为了解耦。
+Spring 支持AspectJ的注解式切面编程。</p>
+</blockquote>
+
+<h4 id="aspectj">AspectJ</h4>
+
+<blockquote>
+  <p>AspectJ是一个面向切面的框架，它扩展了Java语言。AspectJ定义了AOP语法，所以它有一个专门的编译器用来生成遵守Java字节编码规范的Class文件。</p>
+</blockquote>
+
+<p>1.使用@AspectJ 声明是一个切面。
+2.使用@After、@Before、@Around 定义建言(advice),可直接将拦截规则(切点)作为参数。
+3.其中@After、@Before、@Around参数的拦截规则为切点(PointCut),为了使切点复用，可使用@PointCut专门定义拦截规则，然后在@After、@Before、@Around参数中调用。
+4.其中符合条件的每一个被拦截处为连接点(JoinPoint)。</p>
+
+<h3 id="maven依赖">Maven依赖</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spring-aop
+aspectjrt
+aspectjweaver
+</code></pre></div></div>
+
+<h3 id="元注解">元注解</h3>
+
+<p>编写拦截规则的注解可能用到元注解，即 @Retention、 @Target、 @Document、@Inherited四种。</p>
+
+<blockquote>
+  <p>元注解是指注解的注解。</p>
+</blockquote>
+
+<h4 id="retention">@Retention</h4>
+
+<blockquote>
+  <p>@Retention: 定义注解的保留策略</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.@Retention(RetentionPolicy.SOURCE)    //注解仅存在于源码中，在class字节码文件中不包含
+2.@Retention(RetentionPolicy.CLASS)  // 默认的保留策略，注解会在class字节码文件中存在，但运行时无法获得，
+3.@Retention(RetentionPolicy.RUNTIME)   // 注解会在class字节码文件中存在，在运行时可以通过反射获取到
+</code></pre></div></div>
+<h4 id="target">@Target</h4>
+
+<blockquote>
+  <p>定义注解的作用目标 注：elementType 可以有多个，一个注解可以为类的，方法的，字段的等等</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.@Target<span class="o">(</span>ElementType.TYPE<span class="o">)</span> // 接口、类、枚举、注解
+2.@Target<span class="o">(</span>ElementType.FIELD<span class="o">)</span>  // 字段、枚举的常量
+3.@Target<span class="o">(</span>ElementType.METHOD<span class="o">)</span>  // 方法
+4.@Target<span class="o">(</span>ElementType.PARAMETER<span class="o">)</span>  // 方法参数
+5.@Target<span class="o">(</span>ElementType.CONSTRUCTOR<span class="o">)</span>   // 构造函数
+6.@Target<span class="o">(</span>ElementType.LOCAL_VARIABLE<span class="o">)</span> // 局部变量
+7.@Target<span class="o">(</span>ElementType.ANNOTATION_TYPE<span class="o">)</span> // 注解
+8.@Target<span class="o">(</span>ElementType.PACKAGE<span class="o">)</span> / // 包
+</code></pre></div></div>
+
+<h4 id="document">@Document</h4>
+
+<blockquote>
+  <p>@Document：说明该注解将被包含在javadoc中</p>
+</blockquote>
+
+<h4 id="inherited">@Inherited</h4>
+
+<blockquote>
+  <p>@Inherited：说明子类可以继承父类中的该注解</p>
+</blockquote>
+
+<h3 id="拦截方式">拦截方式</h3>
+
+<h4 id="1注解式拦截">1.注解式拦截</h4>
+
+<blockquote>
+  <p>1)即在方法上方使用利用元注解编写的注解；
+<br />2)在切面类  @Pointcut(“@annotation(xx.xxx.xxx)”)
+<br />对有应用 xx.xxx.xxx 进行注解的方法进行横切面拦截 
+<br />@After、@Before、@Around方法中将自定义的注解取出</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MethodSignature signature=(MethodSignature)joinPoint.getSignature();
+Method method=signature.getMethod();
+XX xx=method.getMethod(XX.class);//获得注解类
+</code></pre></div></div>
+<h4 id="2方法规则式拦截">2.方法规则式拦截</h4>
+
+<blockquote>
+  <p>主要通过表达式 execution定义切入点</p>
+</blockquote>
+
+<h5 id="关于execution">关于execution</h5>
+
+<blockquote>
+  <p>（* com.jettylee.service.<em>.</em>（..））中几个通配符的含义： 
+<br />|第一个 * —— 通配 随便率性返回值类型| 
+<br />|第二个 * —— 通配包com.evan.crm.service下的随便率性class| 
+<br />|第三个 * —— 通配包com.evan.crm.service下的随便率性class的随便率性办法| 
+<br />|第四个 .. —— 通配 办法可以有0个或多个参数|</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MethodSignature <span class="nv">signature</span><span class="o">=(</span>MethodSignature<span class="o">)</span>joinPoint.getSignature<span class="o">()</span><span class="p">;</span>
+Method <span class="nv">method</span><span class="o">=</span>signature.getMethod<span class="o">()</span><span class="p">;</span>
+System.out.println<span class="o">(</span><span class="s2">"方法规则式拦截,"</span>+method.getName<span class="o">())</span><span class="p">;</span>
+</code></pre></div>  </div>
+</blockquote>
+
+:ET

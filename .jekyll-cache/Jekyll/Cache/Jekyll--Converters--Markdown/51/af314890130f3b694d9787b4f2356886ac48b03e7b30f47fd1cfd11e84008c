@@ -1,0 +1,81 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#安装mysql" id="markdown-toc-安装mysql">安装mysql</a></li>
+  <li><a href="#查看端口号" id="markdown-toc-查看端口号">查看端口号</a></li>
+  <li><a href="#修改端口" id="markdown-toc-修改端口">修改端口</a></li>
+  <li><a href="#linux-rpm-安装-重启方式" id="markdown-toc-linux-rpm-安装-重启方式">linux rpm 安装 重启方式</a></li>
+  <li><a href="#mysql查看所有用户" id="markdown-toc-mysql查看所有用户">mysql查看所有用户</a></li>
+  <li><a href="#创建用户" id="markdown-toc-创建用户">创建用户</a></li>
+  <li><a href="#修改密码" id="markdown-toc-修改密码">修改密码</a></li>
+</ul>
+
+<h2 id="安装mysql">安装mysql</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#先到官网下载rpm</span>
+<span class="c">#利用工具上传到服务器</span>
+rpm <span class="nt">-Uvh</span>  <span class="k">****</span>.rpm
+</code></pre></div></div>
+
+<h2 id="查看端口号">查看端口号</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show global variables like <span class="s1">'port'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="修改端口">修改端口</h2>
+
+<blockquote>
+  <p>编辑/etc/my.cnf文件</p>
+</blockquote>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi my.cnf
+
+<span class="o">[</span>mysqld]
+
+<span class="nv">port</span><span class="o">=</span>3506     修改或增加
+
+<span class="nv">datadir</span><span class="o">=</span>/var/lib/mysql
+
+<span class="nv">socket</span><span class="o">=</span>/var/lib/mysql/mysql.sock
+
+<span class="nv">user</span><span class="o">=</span>mysql
+
+<span class="c"># Disabling symbolic-links is recommended to prevent assorted security risks</span>
+
+symbolic-links<span class="o">=</span>0
+
+<span class="o">[</span>mysqld_safe]
+
+log-error<span class="o">=</span>/var/log/mysqld.log
+
+pid-file<span class="o">=</span>/var/run/mysqld/mysqld.pid
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>修改文件成功后需要重新启动 mysql</p>
+</blockquote>
+
+<h2 id="linux-rpm-安装-重启方式">linux rpm 安装 重启方式</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service mysqld restart
+</code></pre></div></div>
+
+<h2 id="mysql查看所有用户">mysql查看所有用户</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="k">user</span><span class="p">,</span><span class="k">host</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="k">user</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="创建用户">创建用户</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">insert</span> <span class="k">into</span> <span class="n">mysql</span><span class="p">.</span><span class="k">user</span><span class="p">(</span><span class="k">Host</span><span class="p">,</span><span class="k">User</span><span class="p">,</span><span class="n">Password</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="nv">"localhost"</span><span class="p">,</span><span class="nv">"test"</span><span class="p">,</span><span class="n">password</span><span class="p">(</span><span class="nv">"1234"</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h2 id="修改密码">修改密码</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">update</span> <span class="n">mysql</span><span class="p">.</span><span class="k">user</span> <span class="k">set</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">(</span><span class="s1">'新密码'</span><span class="p">)</span> 
+<span class="k">where</span> <span class="k">User</span><span class="o">=</span><span class="nv">"test"</span> <span class="k">and</span> <span class="k">Host</span><span class="o">=</span><span class="nv">"localhost"</span><span class="p">;</span>
+<span class="o">//</span><span class="err">刷新权限</span>
+<span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span>
+
+</code></pre></div></div>
+
+:ET

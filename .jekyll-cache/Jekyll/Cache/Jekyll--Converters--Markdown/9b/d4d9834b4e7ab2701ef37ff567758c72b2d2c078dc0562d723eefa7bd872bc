@@ -1,0 +1,73 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#双重检测锁解决redis缓存穿透问题" id="markdown-toc-双重检测锁解决redis缓存穿透问题">双重检测锁解决Redis缓存穿透问题</a>    <ul>
+      <li><a href="#redis缓存常规写法代码" id="markdown-toc-redis缓存常规写法代码">redis缓存常规写法代码</a></li>
+      <li><a href="#双重检测锁-改进" id="markdown-toc-双重检测锁-改进">双重检测锁-改进</a></li>
+      <li><a href="#测试方法" id="markdown-toc-测试方法">测试方法</a></li>
+    </ul>
+  </li>
+</ul>
+<h1 id="双重检测锁解决redis缓存穿透问题">双重检测锁解决Redis缓存穿透问题</h1>
+
+<h4 id="redis缓存常规写法代码">redis缓存常规写法代码</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Autowired</span> 
+<span class="nc">RedisTemplate</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">redisTemplate</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>	
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;)</span> <span class="n">redisTemplate</span><span class="o">.</span><span class="na">opsForValue</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="s">"userList"</span><span class="o">);</span>
+		<span class="k">if</span><span class="o">(</span><span class="kc">null</span><span class="o">==</span><span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"从数据库中读取"</span><span class="o">);</span>
+			<span class="n">list</span><span class="o">=</span><span class="n">userDao</span><span class="o">.</span><span class="na">selectSample</span><span class="o">();</span>
+			<span class="n">redisTemplate</span><span class="o">.</span><span class="na">opsForValue</span><span class="o">().</span><span class="na">set</span><span class="o">(</span><span class="s">"userList"</span><span class="o">,</span><span class="n">list</span><span class="o">);</span>
+    	<span class="o">}</span>
+        <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="双重检测锁-改进">双重检测锁-改进</h4>
+
+<blockquote>
+  <p>注：这个改进针对当前对象是单例对象</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Autowired</span> 
+<span class="nc">RedisTemplate</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">redisTemplate</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>	
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;)</span> <span class="n">redisTemplate</span><span class="o">.</span><span class="na">opsForValue</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="s">"userList"</span><span class="o">);</span>
+    	<span class="c1">//判断缓存有没有</span>
+		<span class="k">if</span><span class="o">(</span><span class="kc">null</span><span class="o">==</span><span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">//当前对象加锁</span>
+			<span class="kd">synchronized</span> <span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+                  <span class="c1">//缓存重新取一次</span>
+				<span class="n">list</span> <span class="o">=(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;)</span> <span class="n">redisTemplate</span><span class="o">.</span><span class="na">opsForValue</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="s">"userList"</span><span class="o">);</span>
+                  <span class="c1">//若还是没有</span>
+				<span class="k">if</span><span class="o">(</span><span class="kc">null</span><span class="o">==</span><span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+					<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"从数据库中读取"</span><span class="o">);</span>
+					<span class="n">list</span><span class="o">=</span><span class="n">userDao</span><span class="o">.</span><span class="na">selectSample</span><span class="o">();</span>
+					<span class="n">redisTemplate</span><span class="o">.</span><span class="na">opsForValue</span><span class="o">().</span><span class="na">set</span><span class="o">(</span><span class="s">"userList"</span><span class="o">,</span><span class="n">list</span><span class="o">);</span>
+				<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+					<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"锁等待，从缓存中读取"</span><span class="o">);</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+		<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"从缓存中读取"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="测试方法">测试方法</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ExecutorService</span> <span class="n">executorService</span><span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newFixedThreadPool</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">1000</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+	    <span class="n">executorService</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+	    <span class="nd">@Override</span>
+	    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+	       <span class="c1">//具体实现</span>
+	      <span class="o">}</span>
+	    <span class="o">});</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+
+:ET

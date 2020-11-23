@@ -1,0 +1,78 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#spring-boot实战-maven" id="markdown-toc-spring-boot实战-maven">《Spring Boot实战》-Maven</a>    <ul>
+      <li><a href="#maven-的pomxml" id="markdown-toc-maven-的pomxml">maven 的pom.xml</a>        <ul>
+          <li><a href="#dependencies元素" id="markdown-toc-dependencies元素">dependencies元素</a></li>
+          <li><a href="#dependency元素" id="markdown-toc-dependency元素">dependency元素</a></li>
+        </ul>
+      </li>
+      <li><a href="#变量定义" id="markdown-toc-变量定义">变量定义</a></li>
+      <li><a href="#maven中心库没有需要的jar处理" id="markdown-toc-maven中心库没有需要的jar处理">Maven中心库没有需要的JAR处理</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="spring-boot实战-maven">《Spring Boot实战》-Maven</h1>
+
+<hr />
+
+<h3 id="maven-的pomxml">maven 的pom.xml</h3>
+
+<h4 id="dependencies元素">dependencies元素</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependencies&gt;&lt;/dependencies&gt;
+上面元素包含多个项目依赖需要使用的&lt;dependency&gt;&lt;/dependency&gt;
+</code></pre></div></div>
+<h4 id="dependency元素">dependency元素</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;内部通过groupId、artifactId以及version 确定唯一的依赖，有人称这三个为坐标&lt;/dependency&gt;
+        &lt;groupId&gt;groupId:组织的唯一标识&lt;/groupId&gt;
+        &lt;artifactId&gt;项目的唯一标识&lt;/artifactId&gt;
+        &lt;version&gt;项目的版本&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+        &lt;version&gt;4.1.5.RELEASSE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+<h3 id="变量定义">变量定义</h3>
+<blockquote>
+  <p>变量定义：<properties></properties>可以定义变量在dependency中引用，代码如下：
+```bash</p>
+</blockquote>
+<properties>
+    <spring-framework.version>4.1.5.RELEASSE</spring-framework.version>
+</properties>
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>${spring-framework.version}</version>
+</dependency>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### 编译插件
+
+&gt;Maven提供了编译插件，可在编译插件中涉及Java的编译级别，代码如下。
+
+```bash
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.3.2&lt;/version&gt;
+        &lt;configuration&gt;
+            &lt;source&gt;1.7&lt;/source&gt;
+            &lt;target&gt;1.7&lt;/target&gt;
+        &lt;/configuration&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre></div></div>
+
+<h3 id="maven中心库没有需要的jar处理">Maven中心库没有需要的JAR处理</h3>
+
+<blockquote>
+  <p>如安装Oracle驱动到本地库：</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span>mvn <span class="nb">install</span>:install-file <span class="nt">-DgroupId</span><span class="o">=</span>com.oracle  <span class="nt">-DartifactId</span><span class="o">=</span>ojdbc14 <span class="nt">-Dversion</span><span class="o">=</span>10.2.0.2.0 <span class="nt">-Dpackaging</span><span class="o">=</span>jar  <span class="nt">-Dfile</span><span class="o">=</span>D:<span class="se">\o</span>jdbc14.jar
+</code></pre></div></div>
+
+:ET
