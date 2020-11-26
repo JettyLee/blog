@@ -1,0 +1,71 @@
+I"�<ul id="markdown-toc">
+  <li><a href="#数组链表笔记" id="markdown-toc-数组链表笔记">数组&amp;链表笔记</a>    <ul>
+      <li><a href="#leecode" id="markdown-toc-leecode">leecode</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="数组链表笔记">数组&amp;链表笔记</h3>
+
+<h4 id="leecode">leecode</h4>
+<p>1#<a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">206. Reverse Linked List</a></p>
+<blockquote>
+  <p>Reverse a singly linked list.<br />
+<br /><b>Example:</b>
+<br />Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL
+<br />Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL
+<br />Follow up:
+<br />A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reverseList(head *ListNode) *ListNode {
+    var prev ListNode
+    cur:=head
+	for cur != nil {
+		prev.Next, cur.Next, cur = cur, prev.Next, cur.Next
+	}
+	return prev.Next
+}
+</code></pre></div></div>
+
+<p>2#<a href="https://leetcode.com/problems/swap-nodes-in-pairs/" target="_blank">24. Swap Nodes in Pairs</a></p>
+
+<blockquote>
+  <p>Given a linked list, swap every two adjacent nodes and return its head.
+<br />You may not modify the values in the list’s nodes. Only nodes itself may be changed.
+<br /><b>Example 1:</b>
+<br />Input: head = [1,2,3,4]
+<br />Output: [2,1,4,3]
+<br /><b>Example 2:</b>
+<br />Input: head = []
+<br />Output: []
+<br /><b>Example 3:</b>
+<br />Input: head = [1]
+<br />Output: [1]</p>
+</blockquote>
+
+<p>3#<a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank">141. Linked List Cycle</a></p>
+
+<blockquote>
+  <p>sdfsdfsdf</p>
+</blockquote>
+
+<p>4#<a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank">142. Linked List Cycle II</a></p>
+
+<blockquote>
+  <p>sdfsdfsdf</p>
+</blockquote>
+
+<p>5#<a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank">25. Reverse Nodes in k-Group</a></p>
+
+<blockquote>
+  <p>sdfsdfsdf</p>
+</blockquote>
+:ET
