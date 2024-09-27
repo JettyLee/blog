@@ -18,6 +18,7 @@ permalink: /books/
 
 1.  《Go 语言实战 Go IN ACTION》 李兆海 译
 2.  《Go Web编程 Go Web Programming》黄健宏 译 
+3.  《Go 并发编程实战》 郝林
 
 ## 2020
 
